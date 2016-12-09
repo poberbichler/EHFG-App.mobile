@@ -3,7 +3,7 @@ import {Component, OnInit} from '@angular/core';
 import {NavController} from 'ionic-angular';
 import {Speaker} from "./speaker";
 import {SpeakerService} from "./speakers.service";
-import {SpeakerDetail} from "../speaker-detail/speaker-detail";
+import {SpeakerDetailPage} from "../speaker-detail/speaker-detail";
 
 @Component({
   selector: 'page-speakers',
@@ -19,7 +19,7 @@ export class SpeakersPage implements OnInit {
   }
 
   public showDetails(speaker: Speaker): void {
-    this.navCtrl.push(SpeakerDetail, speaker);
+    this.navCtrl.push(SpeakerDetailPage, speaker);
   }
 
   private getSpeakers() {

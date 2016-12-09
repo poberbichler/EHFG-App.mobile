@@ -8,8 +8,9 @@ import { TabsPage } from '../pages/tabs/tabs';
 import {MapPage} from "../pages/map/map";
 import {SpeakerService} from "../pages/speakers/speakers.service";
 import {HttpModule} from "@angular/http";
-import {SpeakerDetail} from "../pages/speaker-detail/speaker-detail";
+import {SpeakerDetailPage} from "../pages/speaker-detail/speaker-detail";
 import {SessionService} from "../pages/sessions/sessions.service";
+import {SessionDetailPage} from "../pages/session-detail/session-detail.component";
 
 
 @NgModule({
@@ -20,7 +21,8 @@ import {SessionService} from "../pages/sessions/sessions.service";
     TwitterPage,
     TabsPage,
     MapPage,
-    SpeakerDetail
+    SpeakerDetailPage,
+    SessionDetailPage
   ],
   imports: [
     IonicModule.forRoot(MyApp),
@@ -34,7 +36,8 @@ import {SessionService} from "../pages/sessions/sessions.service";
     TwitterPage,
     TabsPage,
     MapPage,
-    SpeakerDetail
+    SpeakerDetailPage,
+    SessionDetailPage
   ],
   providers: [{provide: ErrorHandler, useClass: IonicErrorHandler}, SpeakerService, SessionService]
 })

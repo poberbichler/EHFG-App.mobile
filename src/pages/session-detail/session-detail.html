@@ -1,0 +1,20 @@
+<ion-header>
+  <ion-navbar>
+    <ion-title>
+      {{session.name}}
+    </ion-title>
+  </ion-navbar>
+</ion-header>
+
+<ion-content padding>
+  <p [innerHTML]="session.description"></p>
+
+  <ion-item-group>
+    <ion-item-divider color="light">
+      Speakers
+    </ion-item-divider>
+    <ion-item *ngFor="let speakerId of session.speakerIds">
+      {{speakerId}}
+    </ion-item>
+  </ion-item-group>
+</ion-content>

@@ -1,5 +1,4 @@
-import {NavController, NavParams, ViewController} from "ionic-angular";
-import {SpeakerService} from "../speakers/speakers.service";
+import {NavParams} from "ionic-angular";
 import {Speaker} from "../speakers/speaker";
 import {Component} from "@angular/core";
 
@@ -7,7 +6,7 @@ import {Component} from "@angular/core";
   templateUrl: 'speaker-detail.html',
   selector: 'page-speaker-detail'
 })
-export class SpeakerDetail {
+export class SpeakerDetailPage {
   speaker: Speaker;
 
   constructor(public params: NavParams) {

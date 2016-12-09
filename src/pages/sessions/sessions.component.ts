@@ -3,6 +3,7 @@ import {Component, OnInit} from '@angular/core';
 import { NavController } from 'ionic-angular';
 import {SessionService} from "./sessions.service";
 import {ConferenceDay, Session} from "./conferenceday";
+import {SessionDetailPage} from "../session-detail/session-detail.component";
 
 @Component({
   selector: 'page-sessions',
@@ -26,7 +27,7 @@ export class SessionsPage implements OnInit {
   }
 
   showDetails(session: Session): void {
-    //this.navCtrl.push()
+    this.navCtrl.push(SessionDetailPage, session);
   }
 
   ngOnInit(): void {
