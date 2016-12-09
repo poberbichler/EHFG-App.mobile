@@ -1,0 +1,22 @@
+<ion-header>
+  <ion-navbar>
+    <ion-title>
+      {{speaker.fullName}}
+    </ion-title>
+  </ion-navbar>
+</ion-header>
+
+<ion-content padding>
+  <img [src]="speaker.imageUrl" />
+  <p [innerHTML]="speaker.description">
+  </p>
+
+  <ion-item-group inset>
+    <ion-item-divider color="light">
+      Sessions
+    </ion-item-divider>
+    <ion-item>-- Placeholder --</ion-item>
+    <ion-item>-- Placeholder --</ion-item>
+    <ion-item>-- Placeholder --</ion-item>
+  </ion-item-group>
+</ion-content>

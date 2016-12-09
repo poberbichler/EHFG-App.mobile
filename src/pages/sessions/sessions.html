@@ -1,0 +1,20 @@
+<ion-header>
+  <ion-navbar>
+    <ion-title>
+      Sessions
+    </ion-title>
+  </ion-navbar>
+</ion-header>
+
+<ion-content>
+  <ion-item-group>
+    <div *ngFor="let day of days">
+      <ion-item-divider color="light">
+        {{day}}
+      </ion-item-divider>
+      <ion-item *ngFor="let session of getSessionsForDay(day)">
+        {{session.name}}
+      </ion-item>
+    </div>
+  </ion-item-group>
+</ion-content>
