@@ -1,14 +1,13 @@
 import { Component } from '@angular/core';
-import { Platform } from 'ionic-angular';
+import {Platform, MenuController} from 'ionic-angular';
 import { StatusBar, Splashscreen } from 'ionic-native';
 
 import { TabsPage } from '../pages/tabs/tabs';
 
-
 @Component({
-  template: `<ion-nav [root]="rootPage"></ion-nav>`
+  templateUrl: 'app.template.html'
 })
-export class MyApp {
+export class EhfgApp {
   rootPage = TabsPage;
 
   constructor(platform: Platform) {

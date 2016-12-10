@@ -1,6 +1,6 @@
 import { NgModule, ErrorHandler } from '@angular/core';
 import { IonicApp, IonicModule, IonicErrorHandler } from 'ionic-angular';
-import { MyApp } from './app.component';
+import { EhfgApp } from './app.component';
 import { SessionsPage } from '../pages/sessions/sessions.component';
 import { SpeakersPage } from '../pages/speakers/speakers.component';
 import { TwitterPage } from '../pages/twitter/twitter';
@@ -15,7 +15,7 @@ import {SessionDetailPage} from "../pages/session-detail/session-detail.componen
 
 @NgModule({
   declarations: [
-    MyApp,
+    EhfgApp,
     SessionsPage,
     SpeakersPage,
     TwitterPage,
@@ -25,12 +25,12 @@ import {SessionDetailPage} from "../pages/session-detail/session-detail.componen
     SessionDetailPage
   ],
   imports: [
-    IonicModule.forRoot(MyApp),
+    IonicModule.forRoot(EhfgApp),
     HttpModule
   ],
   bootstrap: [IonicApp],
   entryComponents: [
-    MyApp,
+    EhfgApp,
     SessionsPage,
     SpeakersPage,
     TwitterPage,
