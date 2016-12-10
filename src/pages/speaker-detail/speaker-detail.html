@@ -11,12 +11,12 @@
   <p [innerHTML]="speaker.description">
   </p>
 
-  <ion-item-group inset>
+  <ion-item-group inset style="border: 1px solid #dedede">
     <ion-item-divider color="light">
       Sessions
     </ion-item-divider>
-    <ion-item>-- Placeholder --</ion-item>
-    <ion-item>-- Placeholder --</ion-item>
-    <ion-item>-- Placeholder --</ion-item>
+    <ion-item *ngFor="let session of sessions" (click)="showSessionDetail(session)">
+      {{session.code}} - {{session.name}}
+    </ion-item>
   </ion-item-group>
 </ion-content>

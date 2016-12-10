@@ -7,14 +7,28 @@
 </ion-header>
 
 <ion-content padding>
+  <ion-list no-lines>
+    <ion-item>
+      <ion-icon name="calendar" item-left></ion-icon>
+      <ion-label>Date</ion-label>
+      <ion-note item-right>{{session.startTime | date:'shortTime'}} - {{session.endTime | date:'shortTime'}}</ion-note>
+    </ion-item>
+
+    <ion-item>
+      <ion-icon name="pin" item-left></ion-icon>
+      <ion-label>Location</ion-label>
+      <ion-note item-right>{{session.location}}</ion-note>
+    </ion-item>
+  </ion-list>
+
   <p [innerHTML]="session.description"></p>
 
-  <ion-item-group>
+  <ion-item-group style="border: 1px solid #dedede">
     <ion-item-divider color="light">
       Speakers
     </ion-item-divider>
-    <ion-item *ngFor="let speakerId of session.speakerIds">
-      {{speakerId}}
+    <ion-item *ngFor="let speaker of speakers" (click)="showSpeakerDetail(speaker)">
+      {{speaker.fullName}}
     </ion-item>
   </ion-item-group>
 </ion-content>

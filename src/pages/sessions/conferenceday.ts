@@ -11,5 +11,5 @@ export class Session {
   endTime: number;
   location: string;
   code: string;
-  speakerIds: string[];
+  speakers: string[];
 }

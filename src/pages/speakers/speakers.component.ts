@@ -3,7 +3,7 @@ import {Component, OnInit} from '@angular/core';
 import {NavController} from 'ionic-angular';
 import {Speaker} from "./speaker";
 import {SpeakerService} from "./speakers.service";
-import {SpeakerDetailPage} from "../speaker-detail/speaker-detail";
+import {SpeakerDetailPage} from "../speaker-detail/speaker-detail.component";
 
 @Component({
   selector: 'page-speakers',

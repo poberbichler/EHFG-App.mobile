@@ -1,8 +1,8 @@
 export class Speaker {
-  id: String;
-  firstName: String;
-  lastName: String;
-  imageUrl: String;
-  description: String;
-  fullName: String;
+  id: string;
+  firstName: string;
+  lastName: string;
+  imageUrl: string;
+  description: string;
+  fullName: string;
 }

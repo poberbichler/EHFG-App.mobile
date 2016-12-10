@@ -13,7 +13,7 @@
         {{day}}
       </ion-item-divider>
       <ion-item *ngFor="let session of getSessionsForDay(day)" (click)="showDetails(session)">
-        <h3>{{session.name}}</h3>
+        <h3>{{session.code}} - {{session.name}}</h3>
         <p>{{session.location}}: {{session.startTime | date:'shortTime'}} - {{session.endTime | date:'shortTime'}}</p>
       </ion-item>
     </div>

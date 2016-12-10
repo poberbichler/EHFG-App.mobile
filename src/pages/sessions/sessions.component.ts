@@ -10,8 +10,8 @@ import {SessionDetailPage} from "../session-detail/session-detail.component";
   templateUrl: 'sessions.html'
 })
 export class SessionsPage implements OnInit {
-  dayMap: Map<String, ConferenceDay>;
-  days: String[];
+  dayMap: Map<string, ConferenceDay>;
+  days: string[];
 
   constructor(private navCtrl: NavController, private sessionService: SessionService) { }
 

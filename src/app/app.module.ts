@@ -8,7 +8,7 @@ import { TabsPage } from '../pages/tabs/tabs';
 import {MapPage} from "../pages/map/map";
 import {SpeakerService} from "../pages/speakers/speakers.service";
 import {HttpModule} from "@angular/http";
-import {SpeakerDetailPage} from "../pages/speaker-detail/speaker-detail";
+import {SpeakerDetailPage} from "../pages/speaker-detail/speaker-detail.component";
 import {SessionService} from "../pages/sessions/sessions.service";
 import {SessionDetailPage} from "../pages/session-detail/session-detail.component";
 
