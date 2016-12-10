@@ -1,10 +1,35 @@
 <ion-menu [content]="content">
   <ion-content>
     <ion-searchbar></ion-searchbar>
+
     <ion-list>
-      <ion-item>Hallo</ion-item>
-      <ion-item>Welt</ion-item>
+      <ion-list-header>Navigate</ion-list-header>
+      <ion-item menuClose (click)="openTab(0)">
+        <ion-icon item-left name="twitter"></ion-icon>
+        Twitter
+      </ion-item>
+      <ion-item menuClose (click)="openTab(1)">
+        <ion-icon item-left name="calendar"></ion-icon>
+        Sessions
+      </ion-item>
+      <ion-item menuClose (click)="openTab(2)">
+        <ion-icon item-left name="people"></ion-icon>
+        Speaker
+      </ion-item>
+      <ion-item menuClose (click)="openTab(3)">
+        <ion-icon item-left name="map"></ion-icon>
+        Map
+      </ion-item>
     </ion-list>
+
+    <ion-list>
+      <ion-list-header>
+        Settings
+      </ion-list-header>
+      <ion-item>Reset Data</ion-item>
+      <ion-item>About</ion-item>
+    </ion-list>
+
   </ion-content>
 </ion-menu>
 
