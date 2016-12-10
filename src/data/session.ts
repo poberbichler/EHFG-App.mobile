@@ -1,8 +1,3 @@
-export class ConferenceDay {
-  description: string;
-  sessions: Session[];
-}
-
 export class Session {
   id: string;
   name: string;

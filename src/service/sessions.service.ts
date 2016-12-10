@@ -1,7 +1,7 @@
 import {Injectable} from "@angular/core";
-import {ConferenceDay, Session} from "./conferenceday";
+import {ConferenceDay, Session} from "../data/conferenceday";
 import {Http} from "@angular/http";
-import {Speaker} from "../speakers/speaker";
+import {Speaker} from "../data/speaker";
 
 @Injectable()
 export class SessionService {

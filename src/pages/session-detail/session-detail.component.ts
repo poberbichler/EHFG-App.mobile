@@ -1,8 +1,8 @@
 import {Component} from "@angular/core";
 import {NavParams, NavController} from "ionic-angular";
-import {Session} from "../sessions/conferenceday";
-import {Speaker} from "../speakers/speaker";
-import {SpeakerService} from "../speakers/speakers.service";
+import {Session} from "../../data/conferenceday";
+import {Speaker} from "../../data/speaker";
+import {SpeakerService} from "../../service/speakers.service";
 import {SpeakerDetailPage} from "../speaker-detail/speaker-detail.component";
 
 @Component({

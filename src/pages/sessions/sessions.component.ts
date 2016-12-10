@@ -1,8 +1,8 @@
 import {Component, OnInit} from '@angular/core';
 
 import { NavController } from 'ionic-angular';
-import {SessionService} from "./sessions.service";
-import {ConferenceDay, Session} from "./conferenceday";
+import {SessionService} from "../../service/sessions.service";
+import {ConferenceDay, Session} from "../../data/conferenceday";
 import {SessionDetailPage} from "../session-detail/session-detail.component";
 
 @Component({

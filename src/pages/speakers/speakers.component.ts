@@ -1,8 +1,8 @@
 import {Component, OnInit} from '@angular/core';
 
 import {NavController} from 'ionic-angular';
-import {Speaker} from "./speaker";
-import {SpeakerService} from "./speakers.service";
+import {Speaker} from "../../data/speaker";
+import {SpeakerService} from "../../service/speakers.service";
 import {SpeakerDetailPage} from "../speaker-detail/speaker-detail.component";
 
 @Component({
