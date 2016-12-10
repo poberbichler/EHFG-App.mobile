@@ -1,6 +1,6 @@
 import {Component} from '@angular/core';
 
-import {TwitterPage} from '../twitter/twitter';
+import {TwitterPage} from '../twitter/twitter.component';
 import {SessionsPage} from '../sessions/sessions.component';
 import {SpeakersPage} from '../speakers/speakers.component';
 import {MapPage} from "../map/map";

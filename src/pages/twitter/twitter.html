@@ -9,6 +9,22 @@
 </ion-header>
 
 <ion-content padding>
-  <h2>Awesome tweet page</h2>
-  <p>making it tweets great again</p>
+  <div *ngFor="let tweet of tweets">
+    <ion-card class="tweet">
+      <ion-item>
+        <ion-avatar item-left>
+          <img [src]="tweet.profileImage">
+        </ion-avatar>
+        <h2>{{tweet.fullName}}
+          <span></span>
+          <span class="twitter-date">{{tweet.timestamp}}</span>
+        </h2>
+        <p>@{{tweet.nickName}}</p>
+      </ion-item>
+
+      <ion-card-content>
+        <p [innerHTML]="tweet.message"></p>
+      </ion-card-content>
+    </ion-card>
+  </div>
 </ion-content>

@@ -1,15 +1,14 @@
 import {Injectable} from "@angular/core";
 import {Http} from "@angular/http";
-
 import {Speaker} from "../data/speaker";
 import {Session} from "../data/session";
-
-import 'rxjs/add/operator/toPromise';
+import "rxjs/add/operator/toPromise";
 
 
 @Injectable()
 export class SpeakerService {
-  constructor(private http: Http) { }
+  constructor(private http: Http) {
+  }
 
   getSpeakers(): Promise<Speaker[]> {
     return this.http.get("https://backend-ehfg.rhcloud.com/rest/speakers")
