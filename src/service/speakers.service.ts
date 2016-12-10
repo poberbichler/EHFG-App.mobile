@@ -1,9 +1,10 @@
 import {Injectable} from "@angular/core";
-import {Speaker} from "../data/speaker";
 import {Http} from "@angular/http";
 
+import {Speaker} from "../data/speaker";
+import {Session} from "../data/session";
+
 import 'rxjs/add/operator/toPromise';
-import {Session} from "../data/conferenceday";
 
 
 @Injectable()

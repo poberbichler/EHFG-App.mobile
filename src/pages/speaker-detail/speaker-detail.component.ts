@@ -2,8 +2,8 @@ import {NavParams, NavController} from "ionic-angular";
 import {Speaker} from "../../data/speaker";
 import {Component} from "@angular/core";
 import {SessionService} from "../../service/sessions.service";
-import {Session} from "../../data/conferenceday";
 import {SessionDetailPage} from "../session-detail/session-detail.component";
+import {Session} from "../../data/session";
 
 @Component({
   templateUrl: 'speaker-detail.html',

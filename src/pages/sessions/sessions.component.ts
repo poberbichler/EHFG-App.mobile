@@ -1,8 +1,9 @@
 import {Component, OnInit} from '@angular/core';
 
-import { NavController } from 'ionic-angular';
+import {NavController} from 'ionic-angular';
 import {SessionService} from "../../service/sessions.service";
-import {ConferenceDay, Session} from "../../data/conferenceday";
+import {ConferenceDay} from "../../data/conferenceday";
+import {Session} from "../../data/session";
 import {SessionDetailPage} from "../session-detail/session-detail.component";
 
 @Component({
@@ -13,7 +14,8 @@ export class SessionsPage implements OnInit {
   dayMap: Map<string, ConferenceDay>;
   days: string[];
 
-  constructor(private navCtrl: NavController, private sessionService: SessionService) { }
+  constructor(private navCtrl: NavController, private sessionService: SessionService) {
+  }
 
   public getSessionsForDay(day: string): Session[] {
     return this.dayMap[day].sessions;
