@@ -17,7 +17,7 @@
         </ion-avatar>
         <h2>{{tweet.fullName}}
           <span></span>
-          <span class="twitter-date">{{tweet.timestamp}}</span>
+          <span class="twitter-date">{{tweet.timestamp | twitterTimestamp}}</span>
         </h2>
         <p>@{{tweet.nickName}}</p>
       </ion-item>

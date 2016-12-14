@@ -12,6 +12,7 @@ import {SpeakerDetailPage} from "../pages/speaker-detail/speaker-detail.componen
 import {SessionService} from "../service/sessions.service";
 import {SessionDetailPage} from "../pages/session-detail/session-detail.component";
 import {TwitterService} from "../service/twitter.service";
+import {TwitterTimestampPipe} from "../pages/twitter/twitter.timestamp.pipe";
 
 
 @NgModule({
@@ -23,7 +24,8 @@ import {TwitterService} from "../service/twitter.service";
     TabsPage,
     MapPage,
     SpeakerDetailPage,
-    SessionDetailPage
+    SessionDetailPage,
+    TwitterTimestampPipe
   ],
   imports: [
     IonicModule.forRoot(EhfgApp),
