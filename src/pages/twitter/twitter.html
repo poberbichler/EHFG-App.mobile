@@ -27,4 +27,8 @@
       </ion-card-content>
     </ion-card>
   </div>
+
+  <div *ngIf="hasMoreTweets">
+    <span (click)="loadNextPage()">show more tweets</span>
+  </div>
 </ion-content>

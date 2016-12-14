@@ -26,7 +26,6 @@ export class TwitterTimestampPipe implements PipeTransform {
       return "" + value + "h";
     }
 
-    //return this.datePipe.transform(input, 'MMM d, HH:mm');
     return new DatePipe('de-DE').transform(input, 'MMM d, HH:mm');
   }
 }

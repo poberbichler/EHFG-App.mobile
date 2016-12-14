@@ -1,8 +1,7 @@
 import {Component, OnInit} from '@angular/core';
 
-import { NavController } from 'ionic-angular';
 import {TwitterService} from "../../service/twitter.service";
-import {DomSanitizer, SafeUrl} from "@angular/platform-browser";
+import {DomSanitizer} from "@angular/platform-browser";
 
 @Component({
   selector: 'page-twitter',
@@ -10,12 +9,29 @@ import {DomSanitizer, SafeUrl} from "@angular/platform-browser";
 })
 export class TwitterPage implements OnInit {
   tweets: any[];
-  constructor(private twitterService: TwitterService, private sanitizer: DomSanitizer) { }
+  tweetData: any;
+
+  constructor(private twitterService: TwitterService, private sanitizer: DomSanitizer) {
+  }
 
   ngOnInit(): void {
     this.twitterService.getTweets().then(tweetData => {
-      console.log(tweetData);
       this.tweets = tweetData.data;
+      this.tweetData = tweetData;
     });
+  }
+
+  loadNextPage(): void {
+    this.twitterService.getTweetPage(this.tweetData.currentPage + 1).then(tweetData => {
+      this.tweetData = tweetData;
+      this.tweets = this.tweets.concat(tweetData.data);
+    });
+  }
+
+  get hasMoreTweets() {
+    if (this.tweetData) {
+      return this.tweetData.morePages;
+    }
+    return false;
   }
 }
