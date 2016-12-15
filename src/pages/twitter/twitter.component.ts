@@ -23,7 +23,7 @@ export class TwitterPage implements OnInit {
 
   loadNextPage(): void {
     let loading = this.loadingCtrl.create({
-      content: 'Loading more tweets...'
+      content: 'Loading more Tweets...'
     });
 
     loading.present();
@@ -32,6 +32,13 @@ export class TwitterPage implements OnInit {
       this.tweetData = tweetData;
       this.tweets = this.tweets.concat(tweetData.data);
       loading.dismiss();
+    });
+  }
+
+  updateNewerTweets(refresher): void {
+    this.twitterService.updateTweets(this.tweets[0].timestamp).then(newerTweets => {
+      this.tweets = newerTweets.concat(this.tweets);
+      refresher.complete();
     });
   }
 

@@ -18,4 +18,9 @@ export class TwitterService {
     return this.getTweetPage(0);
   }
 
+  updateTweets(timestamp: any): Promise<any> {
+    return this.http.get(`https://backend-ehfg.rhcloud.com/rest/twitter/update/${timestamp}`)
+      .toPromise()
+      .then(response => response.json());
+  }
 }
