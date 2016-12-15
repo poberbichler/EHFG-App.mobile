@@ -1,7 +1,7 @@
 import {Component, OnInit} from '@angular/core';
 
 import {TwitterService} from "../../service/twitter.service";
-import {DomSanitizer} from "@angular/platform-browser";
+import {LoadingController} from "ionic-angular";
 
 @Component({
   selector: 'page-twitter',
@@ -11,7 +11,7 @@ export class TwitterPage implements OnInit {
   tweets: any[];
   tweetData: any;
 
-  constructor(private twitterService: TwitterService, private sanitizer: DomSanitizer) {
+  constructor(private twitterService: TwitterService, private loadingCtrl: LoadingController) {
   }
 
   ngOnInit(): void {
@@ -22,9 +22,16 @@ export class TwitterPage implements OnInit {
   }
 
   loadNextPage(): void {
+    let loading = this.loadingCtrl.create({
+      content: 'Loading more tweets...'
+    });
+
+    loading.present();
+
     this.twitterService.getTweetPage(this.tweetData.currentPage + 1).then(tweetData => {
       this.tweetData = tweetData;
       this.tweets = this.tweets.concat(tweetData.data);
+      loading.dismiss();
     });
   }
 
