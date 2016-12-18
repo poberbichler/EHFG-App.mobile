@@ -28,7 +28,7 @@
       Speakers
     </ion-item-divider>
     <ion-item *ngFor="let speaker of speakers" (click)="showSpeakerDetail(speaker)">
-      {{speaker.fullName}}
+      <span [innerHTML]="speaker.fullName"></span>
     </ion-item>
   </ion-item-group>
 </ion-content>
