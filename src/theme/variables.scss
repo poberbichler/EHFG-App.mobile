@@ -58,9 +58,18 @@ $colors: (
 // then be future customized. This import comes last
 // so that the above variables are used and Ionic's
 // default are overridden.
+
 $toolbar-background: #0F61A6;
 $toolbar-active-color: white;
-$toolbar-inactive-color: white;
+
+$tabs-background: #0F61A6;
+$tabs-tab-color-active: white;
+$tabs-tab-color-inactive: #f4f4f4;
+
+// these variables are not set by default yet
+$tabs-md-tab-color-inactive: $tabs-tab-color-inactive;
+$tabs-ios-tab-color-inactive: $tabs-tab-color-inactive;
+$tabs-wp-tab-color-inactive: $tabs-tab-color-inactive;
 
 @import "ionic.theme.default";
 
