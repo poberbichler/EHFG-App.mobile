@@ -9,6 +9,11 @@
 </ion-header>
 
 <ion-content padding>
+  <ion-refresher (ionRefresh)="updateNewerTweets($event)">
+    <ion-refresher-content pullingText="Pull to update Tweets">
+    </ion-refresher-content>
+  </ion-refresher>
+
   <div *ngFor="let tweet of tweets">
     <ion-card class="tweet">
       <ion-item>
