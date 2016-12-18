@@ -1,4 +1,10 @@
 page-twitter {
+  .hashtag {
+    ion-card-content {
+      padding-bottom: 5px;
+    }
+  }
+
   .tweet {
     ion-item {
       border-bottom: 1px solid #dedede;

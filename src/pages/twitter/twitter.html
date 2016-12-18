@@ -8,11 +8,17 @@
   </ion-navbar>
 </ion-header>
 
-<ion-content padding>
+<ion-content>
   <ion-refresher (ionRefresh)="updateNewerTweets($event)">
     <ion-refresher-content pullingText="Pull to update Tweets">
     </ion-refresher-content>
   </ion-refresher>
+
+  <ion-card class="hashtag">
+    <ion-card-content>
+      <h1>{{currentHashtag}}</h1>
+    </ion-card-content>
+  </ion-card>
 
   <div *ngFor="let tweet of tweets">
     <ion-card class="tweet">
@@ -34,6 +40,10 @@
   </div>
 
   <div *ngIf="hasMoreTweets">
-    <span (click)="loadNextPage()">show more tweets</span>
+    <ion-card (click)="loadNextPage()">
+      <ion-card-content>
+        Load more tweets...
+      </ion-card-content>
+    </ion-card>
   </div>
 </ion-content>

@@ -42,10 +42,18 @@ export class TwitterPage implements OnInit {
     });
   }
 
-  get hasMoreTweets() {
+  get hasMoreTweets(): boolean {
     if (this.tweetData) {
       return this.tweetData.morePages;
     }
     return false;
+  }
+
+  get currentHashtag(): string {
+    if(this.tweetData) {
+      return this.tweetData.currentHashtag;
+    }
+
+    return "";
   }
 }
