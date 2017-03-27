@@ -1,6 +1,6 @@
 import {Component, ViewChild} from '@angular/core';
 import {Platform, Nav, AlertController} from 'ionic-angular';
-import {StatusBar, Splashscreen} from 'ionic-native';
+import { SplashScreen } from '@ionic-native/splash-screen';
 
 import {TabsPage} from '../pages/tabs/tabs';
 
@@ -12,10 +12,10 @@ export class EhfgApp {
 
   @ViewChild(Nav) nav: Nav;
 
-  constructor(platform: Platform, private alertCtrl: AlertController) {
+  constructor(platform: Platform, private alertCtrl: AlertController, private splashScreen: SplashScreen) {
     platform.ready().then(() => {
-      StatusBar.styleDefault();
-      Splashscreen.hide();
+      //StatusBar.styleDefault();
+      splashScreen.hide();
     });
   }
 

@@ -1,5 +1,6 @@
 import {NgModule, ErrorHandler} from "@angular/core";
 import {IonicApp, IonicModule, IonicErrorHandler} from "ionic-angular";
+import {SplashScreen} from '@ionic-native/splash-screen';
 import {EhfgApp} from "./app.component";
 import {SessionsPage} from "../pages/sessions/sessions.component";
 import {SpeakersPage} from "../pages/speakers/speakers.component";
@@ -42,7 +43,10 @@ import {TwitterTimestampPipe} from "../pages/twitter/twitter.timestamp.pipe";
     SpeakerDetailPage,
     SessionDetailPage
   ],
-  providers: [{provide: ErrorHandler, useClass: IonicErrorHandler}, SpeakerService, SessionService, TwitterService]
+  providers: [
+    {provide: ErrorHandler, useClass: IonicErrorHandler},
+    SplashScreen,
+    SpeakerService, SessionService, TwitterService]
 })
 export class AppModule {
 }

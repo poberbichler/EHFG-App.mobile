@@ -11,8 +11,8 @@
 </ion-header>
 
 <ion-content>
-  <ion-list [virtualScroll]="speakers" [approxItemHeight]="'46px'">
-    <ion-item *virtualItem="let speaker" (click)="showDetails(speaker)">
+  <ion-list>
+    <ion-item *ngFor="let speaker of speakers" (click)="showDetails(speaker)">
       <span [innerHTML]="speaker.fullName"></span>
     </ion-item>
   </ion-list>
