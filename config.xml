@@ -28,4 +28,9 @@
   <feature name="StatusBar">
     <param name="ios-package" onload="true" value="CDVStatusBar"/>
   </feature>
+  <allow-navigation href="http://192.168.0.11:8000"/>
+  <plugin name="cordova-plugin-googlemaps" spec="https://github.com/phonegap-googlemaps-plugin/cordova-plugin-googlemaps">
+    <variable name="API_KEY_FOR_ANDROID" value="AIzaSyDVVBimV3mdTV3V2kYCr5qpp9otxBO30D0" />
+    <variable name="API_KEY_FOR_IOS" value="AIzaSyDVVBimV3mdTV3V2kYCr5qpp9otxBO30D0" />
+  </plugin>
 </widget>
