@@ -29,3 +29,12 @@ body ion-app.md {
 .detail-list {
   border: 1px solid $border-color;
 }
+
+.platform-ios .navbar-logo {
+  height: 32px;
+}
+
+.platform-android .navbar-logo {
+  height: 42px;
+  padding-top: 5px;
+}
