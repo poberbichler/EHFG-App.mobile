@@ -14,6 +14,7 @@ import {SessionService} from "../service/sessions.service";
 import {SessionDetailPage} from "../pages/session-detail/session-detail.component";
 import {TwitterService} from "../service/twitter.service";
 import {TwitterTimestampPipe} from "../pages/twitter/twitter.timestamp.pipe";
+import {AppNavbarComponent} from "../components/app-navbar/app-navbar";
 
 
 @NgModule({
@@ -26,7 +27,8 @@ import {TwitterTimestampPipe} from "../pages/twitter/twitter.timestamp.pipe";
     MapPage,
     SpeakerDetailPage,
     SessionDetailPage,
-    TwitterTimestampPipe
+    TwitterTimestampPipe,
+    AppNavbarComponent
   ],
   imports: [
     IonicModule.forRoot(EhfgApp),

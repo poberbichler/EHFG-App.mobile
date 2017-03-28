@@ -1,9 +1,5 @@
 <ion-header>
-  <ion-navbar>
-    <ion-title>
-      <span [innerHTML]="speaker.fullName"></span>
-    </ion-title>
-  </ion-navbar>
+  <app-navbar [title]="speaker.fullName" [showMenu]="false"></app-navbar>
 </ion-header>
 
 <ion-content padding>

@@ -1,9 +1,5 @@
 <ion-header>
-  <ion-navbar>
-    <ion-title>
-      {{session.name}}
-    </ion-title>
-  </ion-navbar>
+  <app-navbar [title]="session.name" [showMenu]="false"></app-navbar>
 </ion-header>
 
 <ion-content padding>
