@@ -12,16 +12,19 @@ import {SessionDetailPage} from "../session-detail/session-detail.component";
 })
 export class SessionsPage implements OnInit {
   dayMap: Map<string, ConferenceDay>;
+
+  showAllSessions: string = "true";
+
   days: string[];
 
   constructor(private navCtrl: NavController, private sessionService: SessionService) {
   }
 
-  public getSessionsForDay(day: string): Session[] {
-    return this.dayMap[day].sessions;
+  ngOnInit(): void {
+    this.getSessions();
   }
 
-  getSessions(): void {
+  private getSessions(): void {
     this.sessionService.getSessions().then(dayMap => {
       this.dayMap = dayMap;
       this.days = Object.keys(dayMap);
@@ -32,7 +35,24 @@ export class SessionsPage implements OnInit {
     this.navCtrl.push(SessionDetailPage, session);
   }
 
-  ngOnInit(): void {
-    this.getSessions();
+  updateSessions(): void {
+    if (this.showAllSessions === 'true') {
+      Object.keys(this.dayMap).forEach(key => {
+        this.dayMap[key].hidden = false;
+      });
+    }
+
+    else {
+      Object.keys(this.dayMap).forEach(key => {
+        let day = this.dayMap[key];
+
+        let showDay: boolean = false;
+        day.sessions.forEach(session => {
+          showDay = showDay || (session.favourite !== undefined && session.favourite);
+        });
+
+        day.hidden = !showDay;
+      });
+    }
   }
 }

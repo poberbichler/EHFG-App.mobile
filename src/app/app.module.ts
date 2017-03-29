@@ -15,6 +15,7 @@ import {SessionDetailPage} from "../pages/session-detail/session-detail.componen
 import {TwitterService} from "../service/twitter.service";
 import {TwitterTimestampPipe} from "../pages/twitter/twitter.timestamp.pipe";
 import {AppNavbarComponent} from "../components/app-navbar/app-navbar";
+import {IonicStorageModule, Storage} from "@ionic/storage";
 
 
 @NgModule({
@@ -32,6 +33,7 @@ import {AppNavbarComponent} from "../components/app-navbar/app-navbar";
   ],
   imports: [
     IonicModule.forRoot(EhfgApp),
+    IonicStorageModule.forRoot(),
     HttpModule
   ],
   bootstrap: [IonicApp],

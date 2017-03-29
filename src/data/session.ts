@@ -7,4 +7,6 @@ export class Session {
   location: string;
   code: string;
   speakers: string[];
+
+  favourite: boolean;
 }
