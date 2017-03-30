@@ -16,6 +16,7 @@ import {TwitterService} from "../service/twitter.service";
 import {TwitterTimestampPipe} from "../pages/twitter/twitter.timestamp.pipe";
 import {AppNavbarComponent} from "../components/app-navbar/app-navbar";
 import {IonicStorageModule, Storage} from "@ionic/storage";
+import {TweetComponent} from "../components/tweet/tweet";
 
 
 @NgModule({
@@ -29,7 +30,8 @@ import {IonicStorageModule, Storage} from "@ionic/storage";
     SpeakerDetailPage,
     SessionDetailPage,
     TwitterTimestampPipe,
-    AppNavbarComponent
+    AppNavbarComponent,
+    TweetComponent
   ],
   imports: [
     IonicModule.forRoot(EhfgApp),

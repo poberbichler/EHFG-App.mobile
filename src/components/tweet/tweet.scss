@@ -1,0 +1,42 @@
+app-tweet > ion-card.card {
+  ion-item {
+    border-bottom: 1px solid #dedede;
+    background-color: #f5f5f5;
+  }
+
+  ion-label {
+    margin-top: 10px;
+    margin-bottom: 5px;
+
+    h2 {
+      line-height: 1.4;
+      margin-bottom: 0;
+    }
+
+    .twitter-date {
+      float: right;
+      font-size: 80%;
+      color: gray;
+      padding-top: 2px;
+    }
+  }
+
+  ion-card-content.card-content.card-content-md {
+    padding-top: 5px;
+    padding-bottom: 7px;
+  }
+
+  p.retweets {
+    padding-left: 16px;
+    padding-right: 16px;
+    margin-bottom: 5px;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+
+
+    &.expanded {
+      white-space: normal;
+    }
+  }
+}

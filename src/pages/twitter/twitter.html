@@ -15,26 +15,7 @@
   </ion-card>
 
   <div *ngFor="let tweet of tweets" [hidden]="tweet.retweet && hideRetweets">
-    <ion-card class="tweet">
-      <ion-item>
-        <ion-avatar item-left>
-          <img [src]="tweet.profileImage">
-        </ion-avatar>
-        <h2>{{tweet.fullName}}
-          <span></span>
-          <span class="twitter-date">{{tweet.timestamp | twitterTimestamp}}</span>
-        </h2>
-        <p>@{{tweet.nickName}}</p>
-      </ion-item>
-
-      <ion-card-content>
-        <p [innerHTML]="tweet.message"></p>
-      </ion-card-content>
-
-      <ion-row [hidden]="tweet.retweetedBy?.length == 0">
-        <ion-col><ion-icon name="repeat"></ion-icon>retweeted by: {{tweet.retweetedBy.join(', ')}}</ion-col>
-      </ion-row>
-    </ion-card>
+    <app-tweet [tweet]="tweet" [hideRetweets]="hideRetweets"></app-tweet>
   </div>
 
   <div *ngIf="hasMoreTweets">
