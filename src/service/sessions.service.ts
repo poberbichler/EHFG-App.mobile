@@ -9,6 +9,8 @@ import {Storage} from "@ionic/storage";
 export class SessionService {
   private readonly FAVOURITE_SESSION: string = "favouriteSessionIds";
 
+  private sessions: any;
+
   constructor(private http: Http, private storage: Storage) {
   }
 
@@ -23,8 +25,13 @@ export class SessionService {
   }
 
   getSessions(): Promise<Map<string, ConferenceDay>> {
+    if (this.sessions) {
+      return Promise.resolve(this.sessions);
+    }
+
     return this.http.get("https://backend-ehfg.rhcloud.com/rest/sessions").toPromise()
       .then(data => data.json() as Map<string, ConferenceDay>)
+      .then(data => this.sessions = data)
       .then(data => {
         this.getFavouriteSessions().then(favouriteSessions => {
           Object.keys(data).forEach(key => {

@@ -7,10 +7,16 @@ import "rxjs/add/operator/toPromise";
 
 @Injectable()
 export class SpeakerService {
+  private speakers: any;
+
   constructor(private http: Http) {
   }
 
   getSpeakers(): Promise<Speaker[]> {
+    if (this.speakers) {
+      return Promise.resolve(this.speakers);
+    }
+
     return this.http.get("https://backend-ehfg.rhcloud.com/rest/speakers")
       .toPromise()
       .then(response => response.json() as Speaker[]);
