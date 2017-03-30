@@ -14,7 +14,7 @@
     </ion-card-content>
   </ion-card>
 
-  <div *ngFor="let tweet of tweets">
+  <div *ngFor="let tweet of tweets" [hidden]="tweet.retweet && hideRetweets">
     <ion-card class="tweet">
       <ion-item>
         <ion-avatar item-left>
@@ -30,6 +30,10 @@
       <ion-card-content>
         <p [innerHTML]="tweet.message"></p>
       </ion-card-content>
+
+      <ion-row [hidden]="tweet.retweetedBy?.length == 0">
+        <ion-col><ion-icon name="repeat"></ion-icon>retweeted by: {{tweet.retweetedBy.join(', ')}}</ion-col>
+      </ion-row>
     </ion-card>
   </div>
 

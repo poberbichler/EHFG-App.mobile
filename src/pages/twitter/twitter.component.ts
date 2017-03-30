@@ -11,6 +11,8 @@ export class TwitterPage implements OnInit {
   tweets: any[];
   tweetData: any;
 
+  hideRetweets: boolean = true;
+
   constructor(private twitterService: TwitterService, private loadingCtrl: LoadingController) {
   }
 
