@@ -1,7 +1,7 @@
-import {Component, OnInit} from '@angular/core';
+import {Component, OnInit} from "@angular/core";
 
 import {TwitterService} from "../../service/twitter.service";
-import {LoadingController} from "ionic-angular";
+import {Events, LoadingController} from "ionic-angular";
 
 @Component({
   selector: 'page-twitter',
@@ -13,10 +13,14 @@ export class TwitterPage implements OnInit {
 
   hideRetweets: boolean = true;
 
-  constructor(private twitterService: TwitterService, private loadingCtrl: LoadingController) {
+  constructor(private twitterService: TwitterService, private loadingCtrl: LoadingController, private events: Events) {
   }
 
   ngOnInit(): void {
+    this.events.subscribe(TwitterService.SHOW_RETWEETS_TOPIC, event => {
+      this.hideRetweets = (event === 'true')
+    });
+
     this.twitterService.getTweets().then(tweetData => {
       this.tweets = tweetData.data;
       this.tweetData = tweetData;

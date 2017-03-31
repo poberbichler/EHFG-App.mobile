@@ -14,7 +14,7 @@
     <p [innerHTML]="tweet.message"></p>
   </ion-card-content>
 
-  <p [hidden]="tweet.retweetedBy.length == 0 && hideRetweets" class="retweets" [ngClass]="{expanded: isExpanded}"
+  <p [hidden]="tweet.retweetedBy.length == 0 || !hideRetweets" class="retweets" [ngClass]="{expanded: isExpanded}"
      (click)="isExpanded = !isExpanded">
         <span>
           <ion-icon class="retweet-icon" name="repeat"></ion-icon>

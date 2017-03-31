@@ -1,8 +1,9 @@
-import {Component, ViewChild} from '@angular/core';
-import {Platform, Nav, AlertController} from 'ionic-angular';
-import { SplashScreen } from '@ionic-native/splash-screen';
+import {Component, ViewChild} from "@angular/core";
+import {AlertController, Events, Nav, Platform} from "ionic-angular";
+import {SplashScreen} from "@ionic-native/splash-screen";
 
-import {TabsPage} from '../pages/tabs/tabs';
+import {TabsPage} from "../pages/tabs/tabs";
+import {TwitterService} from "../service/twitter.service";
 
 @Component({
   templateUrl: 'app.template.html'
@@ -10,13 +11,34 @@ import {TabsPage} from '../pages/tabs/tabs';
 export class EhfgApp {
   rootPage = TabsPage;
 
+  hideRetweets: boolean = true;
+
   @ViewChild(Nav) nav: Nav;
 
-  constructor(platform: Platform, private alertCtrl: AlertController, private splashScreen: SplashScreen) {
+  constructor(private platform: Platform,
+              private alertCtrl: AlertController,
+              private splashScreen: SplashScreen,
+              private events: Events) {
+
     platform.ready().then(() => {
-      //StatusBar.styleDefault();
       splashScreen.hide();
     });
+  }
+
+  showRetweetsChanged(event: boolean) {
+    this.hideRetweets = event;
+    this.events.publish(TwitterService.SHOW_RETWEETS_TOPIC, event);
+  }
+
+  get activeIndex(): number {
+    let activeNavChild = this.nav.getActiveChildNav();
+    if (activeNavChild) {
+      if (activeNavChild.getSelected()) {
+        return activeNavChild.getSelected().index;
+      }
+    }
+
+    return;
   }
 
   openTab(tabIndex: number): void {

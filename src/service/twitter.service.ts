@@ -1,10 +1,12 @@
 import {Injectable} from "@angular/core";
 import {Http} from "@angular/http";
 
-import 'rxjs/add/operator/toPromise';
+import "rxjs/add/operator/toPromise";
 
 @Injectable()
 export class TwitterService {
+  static readonly SHOW_RETWEETS_TOPIC = "ehfg-app-showRetweetsChanged";
+
   constructor(private http: Http) {
   }
 

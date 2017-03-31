@@ -22,6 +22,18 @@
       </ion-item>
     </ion-list>
 
+    <ion-list radio-group [(ngModel)]="hideRetweets" *ngIf="activeIndex === 0">
+      <ion-item>
+        <ion-label>Show Retweets</ion-label>
+        <ion-radio menuClose value="false" (ionSelect)="showRetweetsChanged($event)"></ion-radio>
+      </ion-item>
+
+      <ion-item>
+        <ion-label>Hide Retweets</ion-label>
+        <ion-radio menuClose value="true" (ionSelect)="showRetweetsChanged($event)"></ion-radio>
+      </ion-item>
+    </ion-list>
+
     <ion-list>
       <ion-list-header>
         Settings
