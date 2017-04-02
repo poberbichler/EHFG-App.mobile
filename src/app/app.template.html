@@ -22,15 +22,25 @@
       </ion-item>
     </ion-list>
 
-    <ion-list radio-group [(ngModel)]="hideRetweets" *ngIf="activeIndex === 0">
+    <ion-list radio-group [(ngModel)]="hideRetweets" (ionChange)="showRetweetsChanged($event) "*ngIf="activeIndex === 0">
       <ion-item>
         <ion-label>Show Retweets</ion-label>
-        <ion-radio menuClose value="false" (ionSelect)="showRetweetsChanged($event)"></ion-radio>
+        <ion-radio menuClose value="false"></ion-radio>
       </ion-item>
 
       <ion-item>
         <ion-label>Hide Retweets</ion-label>
-        <ion-radio menuClose value="true" (ionSelect)="showRetweetsChanged($event)"></ion-radio>
+        <ion-radio menuClose value="true"></ion-radio>
+      </ion-item>
+    </ion-list>
+
+    <ion-list *ngIf="activeIndex === 3">
+      <ion-item *ngFor="let category of mapCategories">
+        <ion-label>{{category.name}}</ion-label>
+        <ion-toggle [(ngModel)]="category.toggled"
+                    (ionChange)="categoryToggleChanged(category)"
+                    color="{{category.cssClass ? category.cssClass : 'toggle-default'}}">
+        </ion-toggle>
       </ion-item>
     </ion-list>
 

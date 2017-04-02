@@ -1,5 +1,5 @@
-import {Component, ViewChild, ElementRef} from "@angular/core";
-import {Platform} from "ionic-angular";
+import {Component, ViewChild, ElementRef, OnInit} from "@angular/core";
+import {Events, Platform} from "ionic-angular";
 import {GoogleMap} from "@ionic-native/google-maps";
 import {Http} from "@angular/http";
 
@@ -11,12 +11,23 @@ declare var google: any;
   selector: 'page-map',
   templateUrl: 'map.html'
 })
-export class MapPage {
+export class MapPage implements OnInit {
+  public static readonly CATEGORY_TOPIC = "ehfg-app-categoryChanged";
+
   @ViewChild('mapCanvas') mapElement: ElementRef;
 
   public map: GoogleMap;
+  private markers: any =  [];
 
-  constructor(private platform: Platform, private http: Http) { }
+  constructor(private platform: Platform, private http: Http, private events: Events) { }
+
+  ngOnInit(): void {
+    this.events.subscribe(MapPage.CATEGORY_TOPIC, category => {
+      this.markers.filter(marker => marker.category === category.name).forEach(marker => {
+        marker.setVisible(category.toggled);
+      });
+    });
+  }
 
   ionViewDidLoad(): void {
     console.log(this.platform);
@@ -46,12 +57,11 @@ export class MapPage {
 
       this.http.get(`https://backend-ehfg.rhcloud.com/rest/points`).subscribe(data => {
         data.json().forEach(point => {
-          console.log(point);
-
           let marker = new google.maps.Marker({
             position: {lat: point.coordinate.latitude, lng: point.coordinate.longitude},
             map: map,
-            icon: `assets/img/markers/${point.category.cssClass ? point.category.cssClass + '-' : ''}marker.png`
+            icon: `assets/img/markers/${point.category.cssClass ? point.category.cssClass + '-' : ''}marker.png`,
+            category: point.category.name
           });
 
           marker.addListener('click', () => {
@@ -61,6 +71,8 @@ export class MapPage {
 
             infoWindow.open(map, marker);
           });
+
+          this.markers.push(marker);
         });
       });
     }

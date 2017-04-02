@@ -4,6 +4,7 @@ import {SplashScreen} from "@ionic-native/splash-screen";
 
 import {TabsPage} from "../pages/tabs/tabs";
 import {TwitterService} from "../service/twitter.service";
+import {MapPage} from "../pages/map/map";
 
 @Component({
   templateUrl: 'app.template.html'
@@ -12,6 +13,23 @@ export class EhfgApp {
   rootPage = TabsPage;
 
   hideRetweets: boolean = true;
+
+  mapCategories = [ {
+    name : "Venues",
+    cssClass : "",
+    imageUrl : "",
+    toggled: true
+  }, {
+    name : "Hotels",
+    cssClass : "toggle-assertive",
+    imageUrl : "",
+    toggled: true
+  }, {
+    name : "Suggested Restaurants",
+    cssClass : "toggle-calm",
+    imageUrl : "",
+    toggled: true
+  } ];
 
   @ViewChild(Nav) nav: Nav;
 
@@ -28,6 +46,10 @@ export class EhfgApp {
   showRetweetsChanged(event: boolean) {
     this.hideRetweets = event;
     this.events.publish(TwitterService.SHOW_RETWEETS_TOPIC, event);
+  }
+
+  categoryToggleChanged(category) {
+    this.events.publish(MapPage.CATEGORY_TOPIC, category);
   }
 
   get activeIndex(): number {

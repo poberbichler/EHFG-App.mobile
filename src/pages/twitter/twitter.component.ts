@@ -18,7 +18,7 @@ export class TwitterPage implements OnInit {
 
   ngOnInit(): void {
     this.events.subscribe(TwitterService.SHOW_RETWEETS_TOPIC, event => {
-      this.hideRetweets = (event === 'true')
+      this.hideRetweets = (event === true || event === 'true');
     });
 
     this.twitterService.getTweets().then(tweetData => {
