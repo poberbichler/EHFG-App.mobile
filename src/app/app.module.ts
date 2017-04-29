@@ -1,6 +1,6 @@
-import {NgModule, ErrorHandler} from "@angular/core";
-import {IonicApp, IonicModule, IonicErrorHandler} from "ionic-angular";
-import {SplashScreen} from '@ionic-native/splash-screen';
+import {ErrorHandler, NgModule} from "@angular/core";
+import {IonicApp, IonicErrorHandler, IonicModule} from "ionic-angular";
+import {SplashScreen} from "@ionic-native/splash-screen";
 import {EhfgApp} from "./app.component";
 import {SessionsPage} from "../pages/sessions/sessions.component";
 import {SpeakersPage} from "../pages/speakers/speakers.component";
@@ -15,9 +15,10 @@ import {SessionDetailPage} from "../pages/session-detail/session-detail.componen
 import {TwitterService} from "../service/twitter.service";
 import {TwitterTimestampPipe} from "../pages/twitter/twitter.timestamp.pipe";
 import {AppNavbarComponent} from "../components/app-navbar/app-navbar";
-import {IonicStorageModule, Storage} from "@ionic/storage";
+import {IonicStorageModule} from "@ionic/storage";
 import {TweetComponent} from "../components/tweet/tweet";
 import {BrowserModule} from "@angular/platform-browser";
+import {SearchPage} from "../pages/search/search";
 
 
 @NgModule({
@@ -32,7 +33,8 @@ import {BrowserModule} from "@angular/platform-browser";
     SessionDetailPage,
     TwitterTimestampPipe,
     AppNavbarComponent,
-    TweetComponent
+    TweetComponent,
+    SearchPage
   ],
   imports: [
     IonicModule.forRoot(EhfgApp),
@@ -49,7 +51,8 @@ import {BrowserModule} from "@angular/platform-browser";
     TabsPage,
     MapPage,
     SpeakerDetailPage,
-    SessionDetailPage
+    SessionDetailPage,
+    SearchPage
   ],
   providers: [
     {provide: ErrorHandler, useClass: IonicErrorHandler},

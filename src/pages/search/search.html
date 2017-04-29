@@ -1,0 +1,23 @@
+<ion-header>
+  <app-navbar [title]="searchTerm"></app-navbar>
+</ion-header>
+
+
+<ion-content>
+  <ion-list>
+    <div *ngFor="let result of searchResult?.results">
+      <ion-item-divider [hidden]="result.data.length === 0">
+        {{result.type}}
+      </ion-item-divider>
+
+      <ion-item *ngFor="let item of result.data">
+        <span [innerHTML]="item.description"></span>
+      </ion-item>
+    </div>
+
+    <ion-item-divider [hidden]="searchResult?.tweets.length === 0">Tweets</ion-item-divider>
+    <ion-item *ngFor="let tweet of searchResult?.tweets">
+      <app-tweet [tweet]="tweet" [hideRetweets]="true"></app-tweet>
+    </ion-item>
+  </ion-list>
+</ion-content>

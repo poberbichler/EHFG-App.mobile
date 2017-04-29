@@ -5,6 +5,7 @@ import {SplashScreen} from "@ionic-native/splash-screen";
 import {TabsPage} from "../pages/tabs/tabs";
 import {TwitterService} from "../service/twitter.service";
 import {MapPage} from "../pages/map/map";
+import {SearchPage} from "../pages/search/search";
 
 @Component({
   templateUrl: 'app.template.html'
@@ -12,6 +13,7 @@ import {MapPage} from "../pages/map/map";
 export class EhfgApp {
   rootPage = TabsPage;
 
+  searchTerm: string = "";
   hideRetweets: boolean = true;
 
   mapCategories = [ {
@@ -50,6 +52,11 @@ export class EhfgApp {
 
   categoryToggleChanged(category) {
     this.events.publish(MapPage.CATEGORY_TOPIC, category);
+  }
+
+  search(event): void {
+    console.log(event);
+    this.nav.push(SearchPage, this.searchTerm);
   }
 
   get activeIndex(): number {
