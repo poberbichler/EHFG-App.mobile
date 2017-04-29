@@ -42,7 +42,7 @@ export class TwitterPage implements OnInit {
   }
 
   updateNewerTweets(refresher): void {
-    this.twitterService.updateTweets(this.tweets[0].timestamp).then(newerTweets => {
+    this.twitterService.updateTweetsById(this.tweets[0].id).then(newerTweets => {
       this.tweets = newerTweets.concat(this.tweets);
       refresher.complete();
     });

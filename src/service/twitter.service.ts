@@ -25,4 +25,10 @@ export class TwitterService {
       .toPromise()
       .then(response => response.json());
   }
+
+  updateTweetsById(id: string): Promise<any> {
+    return this.http.get(`https://backend-ehfg.rhcloud.com/rest/twitter/update/id/${id}`)
+      .toPromise()
+      .then(response => response.json());
+  }
 }
