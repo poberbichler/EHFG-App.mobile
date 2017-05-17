@@ -16,6 +16,7 @@ import {TwitterService} from "../service/twitter.service";
 import {TwitterTimestampPipe} from "../pages/twitter/twitter.timestamp.pipe";
 import {AppNavbarComponent} from "../components/app-navbar/app-navbar";
 import {IonicStorageModule, Storage} from "@ionic/storage";
+import {UtcTimeService} from "../service/time.service";
 
 
 @NgModule({
@@ -50,7 +51,7 @@ import {IonicStorageModule, Storage} from "@ionic/storage";
   providers: [
     {provide: ErrorHandler, useClass: IonicErrorHandler},
     SplashScreen,
-    SpeakerService, SessionService, TwitterService]
+    SpeakerService, SessionService, TwitterService, UtcTimeService]
 })
 export class AppModule {
 }
