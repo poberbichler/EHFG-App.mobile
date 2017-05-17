@@ -17,6 +17,7 @@ import {TwitterTimestampPipe} from "../pages/twitter/twitter.timestamp.pipe";
 import {AppNavbarComponent} from "../components/app-navbar/app-navbar";
 import {IonicStorageModule, Storage} from "@ionic/storage";
 import {UtcTimeService} from "../service/time.service";
+import {UtcDatePipe} from "../components/utcpipe/utctimestamp.pipe";
 
 
 @NgModule({
@@ -30,6 +31,7 @@ import {UtcTimeService} from "../service/time.service";
     SpeakerDetailPage,
     SessionDetailPage,
     TwitterTimestampPipe,
+    UtcDatePipe,
     AppNavbarComponent
   ],
   imports: [
