@@ -1,11 +1,10 @@
 import {Component} from "@angular/core";
-import {NavParams, NavController} from "ionic-angular";
+import {NavController, NavParams} from "ionic-angular";
 import {Session} from "../../data/session";
 import {Speaker} from "../../data/speaker";
 import {SpeakerService} from "../../service/speakers.service";
 import {SpeakerDetailPage} from "../speaker-detail/speaker-detail.component";
 import {SessionService} from "../../service/sessions.service";
-import {UtcTimeService} from "../../service/time.service";
 
 @Component({
   selector: 'page-sessions-detail',

@@ -18,6 +18,7 @@ import {AppNavbarComponent} from "../components/app-navbar/app-navbar";
 import {IonicStorageModule, Storage} from "@ionic/storage";
 import {UtcTimeService} from "../service/time.service";
 import {UtcDatePipe} from "../components/utcpipe/utctimestamp.pipe";
+import {TrustHtmlPipe} from "../components/sanitizeDom/trusthtml.pipe";
 
 
 @NgModule({
@@ -32,6 +33,7 @@ import {UtcDatePipe} from "../components/utcpipe/utctimestamp.pipe";
     SessionDetailPage,
     TwitterTimestampPipe,
     UtcDatePipe,
+    TrustHtmlPipe,
     AppNavbarComponent
   ],
   imports: [
