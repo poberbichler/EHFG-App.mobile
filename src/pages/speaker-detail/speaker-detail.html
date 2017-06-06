@@ -4,7 +4,7 @@
 
 <ion-content padding>
   <img [src]="speaker.imageUrl" />
-  <p [innerHTML]="speaker.description">
+  <p [innerHTML]="speaker.description | trustHtml">
   </p>
 
   <ion-item-group inset class="detail-list">

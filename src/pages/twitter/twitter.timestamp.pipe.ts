@@ -1,5 +1,6 @@
 import {PipeTransform, Pipe} from "@angular/core";
 import {DatePipe} from "@angular/common";
+import {UtcTimeService} from "../../service/time.service";
 
 @Pipe({name: 'twitterTimestamp'})
 export class TwitterTimestampPipe implements PipeTransform {
@@ -8,8 +9,10 @@ export class TwitterTimestampPipe implements PipeTransform {
   readonly hour: number = this.minute * 60;
   readonly day: number = this.hour * 24;
 
+  constructor(private utcTimeService: UtcTimeService) { }
+
   transform(input: number, args: string[]): any {
-    let difference: number = input - new Date().getUTCMilliseconds();
+    let difference: number = this.utcTimeService.currentTime.getTime() - this.utcTimeService.getUtcTimeFor(input).getTime();
     if (difference < this.day) {
       if (difference < this.minute) {
         let value = (difference / this.second).toFixed(0);
@@ -26,6 +29,6 @@ export class TwitterTimestampPipe implements PipeTransform {
       return "" + value + "h";
     }
 
-    return new DatePipe('de-DE').transform(input, 'MMM d, HH:mm');
+    return new DatePipe('de-DE').transform(this.utcTimeService.getUtcTimeFor(input), 'MMM d, HH:mm');
   }
 }

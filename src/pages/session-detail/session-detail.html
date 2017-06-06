@@ -7,7 +7,7 @@
     <ion-item>
       <ion-icon name="calendar" item-left></ion-icon>
       <ion-label>Date</ion-label>
-      <ion-note item-right>{{session.startTime | date:'shortTime'}} - {{session.endTime | date:'shortTime'}}</ion-note>
+      <ion-note item-right>{{session.startTime | utcDate:'shortTime'}} - {{session.endTime | utcDate:'shortTime'}}</ion-note>
     </ion-item>
 
     <ion-item>
@@ -27,7 +27,7 @@
     </ion-item>
   </ion-list>
 
-  <p [innerHTML]="session.description"></p>
+  <p [innerHTML]="session.description | trustHtml"></p>
 
   <ion-item-group class="detail-list">
     <ion-item-divider color="light">

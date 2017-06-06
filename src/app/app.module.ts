@@ -15,10 +15,13 @@ import {SessionDetailPage} from "../pages/session-detail/session-detail.componen
 import {TwitterService} from "../service/twitter.service";
 import {TwitterTimestampPipe} from "../pages/twitter/twitter.timestamp.pipe";
 import {AppNavbarComponent} from "../components/app-navbar/app-navbar";
-import {IonicStorageModule} from "@ionic/storage";
 import {TweetComponent} from "../components/tweet/tweet";
 import {BrowserModule} from "@angular/platform-browser";
 import {SearchPage} from "../pages/search/search";
+import {IonicStorageModule, Storage} from "@ionic/storage";
+import {UtcTimeService} from "../service/time.service";
+import {UtcDatePipe} from "../components/utcpipe/utctimestamp.pipe";
+import {TrustHtmlPipe} from "../components/sanitizeDom/trusthtml.pipe";
 
 
 @NgModule({
@@ -34,7 +37,10 @@ import {SearchPage} from "../pages/search/search";
     TwitterTimestampPipe,
     AppNavbarComponent,
     TweetComponent,
-    SearchPage
+    SearchPage,
+    UtcDatePipe,
+    TrustHtmlPipe,
+    AppNavbarComponent
   ],
   imports: [
     IonicModule.forRoot(EhfgApp),
@@ -57,7 +63,7 @@ import {SearchPage} from "../pages/search/search";
   providers: [
     {provide: ErrorHandler, useClass: IonicErrorHandler},
     SplashScreen,
-    SpeakerService, SessionService, TwitterService]
+    SpeakerService, SessionService, TwitterService, UtcTimeService]
 })
 export class AppModule {
 }

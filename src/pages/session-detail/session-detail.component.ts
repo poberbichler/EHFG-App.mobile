@@ -1,5 +1,5 @@
 import {Component} from "@angular/core";
-import {NavParams, NavController} from "ionic-angular";
+import {NavController, NavParams} from "ionic-angular";
 import {Session} from "../../data/session";
 import {Speaker} from "../../data/speaker";
 import {SpeakerService} from "../../service/speakers.service";
