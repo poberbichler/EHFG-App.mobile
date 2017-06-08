@@ -2,16 +2,17 @@ import {Injectable} from "@angular/core";
 import {Http} from "@angular/http";
 
 import "rxjs/add/operator/toPromise";
+import {Globals} from "./globals.service";
 
 @Injectable()
 export class TwitterService {
   static readonly SHOW_RETWEETS_TOPIC = "ehfg-app-showRetweetsChanged";
 
-  constructor(private http: Http) {
+  constructor(private http: Http, private globals: Globals) {
   }
 
   getTweetPage(page: number): Promise<any> {
-    return this.http.get(`https://backend-ehfg.rhcloud.com/rest/twitter/page/${page}`)
+    return this.http.get(this.globals.baseUrl + `tweets/page/${page}`)
       .toPromise()
       .then(response => response.json());
   }
@@ -21,13 +22,13 @@ export class TwitterService {
   }
 
   updateTweets(timestamp: any): Promise<any> {
-    return this.http.get(`https://backend-ehfg.rhcloud.com/rest/twitter/update/${timestamp}`)
+    return this.http.get(this.globals.baseUrl + `tweets/update/${timestamp}`)
       .toPromise()
       .then(response => response.json());
   }
 
   updateTweetsById(id: string): Promise<any> {
-    return this.http.get(`https://backend-ehfg.rhcloud.com/rest/twitter/update/id/${id}`)
+    return this.http.get(this.globals.baseUrl + `tweets/update/id/${id}`)
       .toPromise()
       .then(response => response.json());
   }

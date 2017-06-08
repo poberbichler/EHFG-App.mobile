@@ -3,13 +3,14 @@ import {Http} from "@angular/http";
 import {Speaker} from "../data/speaker";
 import {Session} from "../data/session";
 import "rxjs/add/operator/toPromise";
+import {Globals} from "./globals.service";
 
 
 @Injectable()
 export class SpeakerService {
   private speakers: any;
 
-  constructor(private http: Http) {
+  constructor(private http: Http, private globals: Globals) {
   }
 
   getSpeakers(): Promise<Speaker[]> {
@@ -17,7 +18,7 @@ export class SpeakerService {
       return Promise.resolve(this.speakers);
     }
 
-    return this.http.get("https://backend-ehfg.rhcloud.com/rest/speakers")
+    return this.http.get(this.globals.baseUrl + "speakers")
       .toPromise()
       .then(response => response.json() as Speaker[]);
   }

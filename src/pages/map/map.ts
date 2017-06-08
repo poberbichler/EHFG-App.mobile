@@ -4,6 +4,7 @@ import {GoogleMap} from "@ionic-native/google-maps";
 import {Http} from "@angular/http";
 
 import 'rxjs/add/operator/toPromise';
+import {Globals} from "../../service/globals.service";
 
 declare var google: any;
 
@@ -19,7 +20,7 @@ export class MapPage implements OnInit {
   public map: GoogleMap;
   private markers: any =  [];
 
-  constructor(private platform: Platform, private http: Http, private events: Events) { }
+  constructor(private platform: Platform, private http: Http, private events: Events, private globals: Globals) { }
 
   ngOnInit(): void {
     this.events.subscribe(MapPage.CATEGORY_TOPIC, category => {
@@ -55,7 +56,7 @@ export class MapPage implements OnInit {
         zoom: 16
       });
 
-      this.http.get(`https://backend-ehfg.rhcloud.com/rest/points`).subscribe(data => {
+      this.http.get(this.globals.baseUrl + "points").subscribe(data => {
         data.json().forEach(point => {
           let marker = new google.maps.Marker({
             position: {lat: point.coordinate.latitude, lng: point.coordinate.longitude},

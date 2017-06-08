@@ -6,6 +6,7 @@ import {TabsPage} from "../pages/tabs/tabs";
 import {TwitterService} from "../service/twitter.service";
 import {MapPage} from "../pages/map/map";
 import {SearchPage} from "../pages/search/search";
+import {Globals} from "../service/globals.service";
 
 @Component({
   templateUrl: 'app.template.html'
@@ -16,29 +17,13 @@ export class EhfgApp {
   searchTerm: string = "";
   hideRetweets: boolean = true;
 
-  mapCategories = [ {
-    name : "Venues",
-    cssClass : "",
-    imageUrl : "",
-    toggled: true
-  }, {
-    name : "Hotels",
-    cssClass : "toggle-assertive",
-    imageUrl : "",
-    toggled: true
-  }, {
-    name : "Suggested Restaurants",
-    cssClass : "toggle-calm",
-    imageUrl : "",
-    toggled: true
-  } ];
-
   @ViewChild(Nav) nav: Nav;
 
   constructor(private platform: Platform,
               private alertCtrl: AlertController,
               private splashScreen: SplashScreen,
-              private events: Events) {
+              private events: Events,
+              private globals: Globals) {
 
     platform.ready().then(() => {
       splashScreen.hide();
@@ -55,7 +40,6 @@ export class EhfgApp {
   }
 
   search(event): void {
-    console.log(event);
     this.nav.push(SearchPage, this.searchTerm);
   }
 
@@ -87,5 +71,9 @@ export class EhfgApp {
 
   resetData(): void {
     console.log('reset is not implemented yet');
+  }
+
+  get mapCategories() {
+    return this.globals.mapCategories;
   }
 }

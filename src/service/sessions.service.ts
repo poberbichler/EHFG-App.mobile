@@ -4,6 +4,7 @@ import {Http} from "@angular/http";
 import {Speaker} from "../data/speaker";
 import {Session} from "../data/session";
 import {Storage} from "@ionic/storage";
+import {Globals} from "./globals.service";
 
 @Injectable()
 export class SessionService {
@@ -11,7 +12,7 @@ export class SessionService {
 
   private sessions: any;
 
-  constructor(private http: Http, private storage: Storage) {
+  constructor(private http: Http, private storage: Storage, private globals: Globals) {
   }
 
   getFavouriteSessions(): Promise<string[]> {
@@ -29,7 +30,7 @@ export class SessionService {
       return Promise.resolve(this.sessions);
     }
 
-    return this.http.get("https://backend-ehfg.rhcloud.com/rest/sessions").toPromise()
+    return this.http.get(this.globals.baseUrl + "sessions").toPromise()
       .then(data => data.json() as Map<string, ConferenceDay>)
       .then(data => this.sessions = data)
       .then(data => {

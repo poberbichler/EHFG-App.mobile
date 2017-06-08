@@ -22,6 +22,7 @@ import {IonicStorageModule, Storage} from "@ionic/storage";
 import {UtcTimeService} from "../service/time.service";
 import {UtcDatePipe} from "../components/utcpipe/utctimestamp.pipe";
 import {TrustHtmlPipe} from "../components/sanitizeDom/trusthtml.pipe";
+import {Globals} from "../service/globals.service";
 
 
 @NgModule({
@@ -63,7 +64,7 @@ import {TrustHtmlPipe} from "../components/sanitizeDom/trusthtml.pipe";
   providers: [
     {provide: ErrorHandler, useClass: IonicErrorHandler},
     SplashScreen,
-    SpeakerService, SessionService, TwitterService, UtcTimeService]
+    SpeakerService, SessionService, TwitterService, UtcTimeService, Globals]
 })
 export class AppModule {
 }
