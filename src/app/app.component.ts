@@ -1,5 +1,5 @@
 import {Component, ViewChild} from "@angular/core";
-import {AlertController, Events, Nav, Platform} from "ionic-angular";
+import {AlertController, Events, MenuController, Nav, Platform} from "ionic-angular";
 import {SplashScreen} from "@ionic-native/splash-screen";
 
 import {TabsPage} from "../pages/tabs/tabs";
@@ -23,7 +23,8 @@ export class EhfgApp {
               private alertCtrl: AlertController,
               private splashScreen: SplashScreen,
               private events: Events,
-              private globals: Globals) {
+              private globals: Globals,
+              private menuCtrl: MenuController) {
 
     platform.ready().then(() => {
       splashScreen.hide();
@@ -41,6 +42,8 @@ export class EhfgApp {
 
   search(event): void {
     this.nav.push(SearchPage, this.searchTerm);
+    this.menuCtrl.close();
+    this.searchTerm = "";
   }
 
   get activeIndex(): number {

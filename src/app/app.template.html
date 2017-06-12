@@ -1,7 +1,6 @@
 <ion-menu [content]="content">
   <ion-content>
-    <ion-searchbar [(ngModel)]="searchTerm" [showCancelButton]="true" (ionInput)="search($event)">
-
+    <ion-searchbar [(ngModel)]="searchTerm" [showCancelButton]="true" (search)="search($event)">
     </ion-searchbar>
 
     <ion-list>
