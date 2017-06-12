@@ -18,11 +18,12 @@ import {AppNavbarComponent} from "../components/app-navbar/app-navbar";
 import {TweetComponent} from "../components/tweet/tweet";
 import {BrowserModule} from "@angular/platform-browser";
 import {SearchPage} from "../pages/search/search";
-import {IonicStorageModule, Storage} from "@ionic/storage";
+import {IonicStorageModule} from "@ionic/storage";
 import {UtcTimeService} from "../service/time.service";
 import {UtcDatePipe} from "../components/utcpipe/utctimestamp.pipe";
 import {TrustHtmlPipe} from "../components/sanitizeDom/trusthtml.pipe";
 import {Globals} from "../service/globals.service";
+import {SpeakerImageComponent} from "../components/speaker-image/speaker-image";
 
 
 @NgModule({
@@ -41,7 +42,8 @@ import {Globals} from "../service/globals.service";
     SearchPage,
     UtcDatePipe,
     TrustHtmlPipe,
-    AppNavbarComponent
+    AppNavbarComponent,
+    SpeakerImageComponent
   ],
   imports: [
     IonicModule.forRoot(EhfgApp),

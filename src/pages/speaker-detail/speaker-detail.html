@@ -3,7 +3,8 @@
 </ion-header>
 
 <ion-content padding>
-  <img [src]="speaker.imageUrl" />
+  <speaker-image [speaker]="speaker"></speaker-image>
+
   <p [innerHTML]="speaker.description | trustHtml">
   </p>
 
