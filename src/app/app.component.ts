@@ -63,7 +63,7 @@ export class EhfgApp {
       title: 'About',
       subTitle: `<p>The European Health Forum Gastein is an annual international conference where stakeholders within
 		            the field of healthcare and public health meet to discuss a broad spectrum of important topics.</p>
-		            <p>The theme of this year is "Demographics and Diversity in Europe - New Solutions for Health"</p>
+		            <p>The theme of this year is "Health in All Politics–a better future for Europe"</p>
 		            <p>Please direct any questions or concerns to <a href="mailto:info@ehfg.org">info@ehfg.org</a></p>`,
       buttons: ['Exit']});
     alert.present();
