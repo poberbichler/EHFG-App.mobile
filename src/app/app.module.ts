@@ -14,7 +14,6 @@ import {SessionService} from "../service/sessions.service";
 import {SessionDetailPage} from "../pages/session-detail/session-detail.component";
 import {TwitterService} from "../service/twitter.service";
 import {TwitterTimestampPipe} from "../pages/twitter/twitter.timestamp.pipe";
-import {AppNavbarComponent} from "../components/app-navbar/app-navbar";
 import {TweetComponent} from "../components/tweet/tweet";
 import {BrowserModule} from "@angular/platform-browser";
 import {SearchPage} from "../pages/search/search";
@@ -37,12 +36,10 @@ import {SpeakerImageComponent} from "../components/speaker-image/speaker-image";
     SpeakerDetailPage,
     SessionDetailPage,
     TwitterTimestampPipe,
-    AppNavbarComponent,
     TweetComponent,
     SearchPage,
     UtcDatePipe,
     TrustHtmlPipe,
-    AppNavbarComponent,
     SpeakerImageComponent
   ],
   imports: [
