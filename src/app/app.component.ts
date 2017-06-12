@@ -73,7 +73,11 @@ export class EhfgApp {
   }
 
   resetData(): void {
-    console.log('reset is not implemented yet');
+    caches.keys().then(cacheNames => {
+      Promise.all(cacheNames.map(cacheName => {
+        return caches.delete(cacheName);
+      })).then(result => location.reload());
+    });
   }
 
   get mapCategories() {
