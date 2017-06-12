@@ -6,7 +6,7 @@ import {Http} from "@angular/http";
 import 'rxjs/add/operator/toPromise';
 import {Globals} from "../../service/globals.service";
 
-declare var google: any;
+declare const google: any;
 
 @Component({
   selector: 'page-map',

@@ -19,6 +19,7 @@ export class Globals {
     toggled: true
   }];
 
+  baseUrl = "https://vg3eqhj2s7.execute-api.eu-central-1.amazonaws.com/prod/"
   //baseUrl = "https://backend-ehfg.rhcloud.com/rest/";
-  baseUrl = "http://localhost:8082/";
+  //baseUrl = "http://localhost:8082/";
 }

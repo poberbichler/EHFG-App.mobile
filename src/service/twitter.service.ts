@@ -12,7 +12,7 @@ export class TwitterService {
   }
 
   getTweetPage(page: number): Promise<any> {
-    return this.http.get(this.globals.baseUrl + `tweets/page/${page}`)
+    return this.http.get(this.globals.baseUrl + `twitter/page/${page}`)
       .toPromise()
       .then(response => response.json());
   }
@@ -22,13 +22,13 @@ export class TwitterService {
   }
 
   updateTweets(timestamp: any): Promise<any> {
-    return this.http.get(this.globals.baseUrl + `tweets/update/${timestamp}`)
+    return this.http.get(this.globals.baseUrl + `twitter/update/${timestamp}`)
       .toPromise()
       .then(response => response.json());
   }
 
   updateTweetsById(id: string): Promise<any> {
-    return this.http.get(this.globals.baseUrl + `tweets/update/id/${id}`)
+    return this.http.get(this.globals.baseUrl + `twitter/update/id/${id}`)
       .toPromise()
       .then(response => response.json());
   }
