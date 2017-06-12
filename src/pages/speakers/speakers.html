@@ -1,7 +1,16 @@
 <ion-header>
-  <app-navbar [title]="'Speakers'"></app-navbar>
-</ion-header>
+  <ion-navbar>
+    <button ion-button menuToggle>
+      <ion-icon name="menu"></ion-icon>
+    </button>
 
+    <ion-title>Speakers</ion-title>
+
+    <ion-buttons end>
+      <img class="navbar-logo" src="assets/img/logo.svg" />
+    </ion-buttons>
+  </ion-navbar>
+</ion-header>
 <ion-content>
   <ion-list>
     <ion-item *ngFor="let speaker of speakers" (click)="showDetails(speaker)">
