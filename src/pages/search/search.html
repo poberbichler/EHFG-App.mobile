@@ -22,7 +22,7 @@
         {{result.type}}
       </ion-item-divider>
 
-      <ion-item *ngFor="let item of result.data">
+      <ion-item *ngFor="let item of result.data" (click)="showDetails(item)">
         <span [innerHTML]="item.description"></span>
       </ion-item>
     </div>

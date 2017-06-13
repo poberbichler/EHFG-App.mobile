@@ -28,4 +28,10 @@ export class SpeakerService {
       return speakers.filter(speaker => session.speakers.indexOf(speaker.id) !== -1)
     });
   }
+
+  getSpeakerById(id: string): Promise<Speaker> {
+    return this.getSpeakers().then(speakers => {
+      return speakers.filter(speaker => speaker.id === id)[0];
+    });
+  }
 }

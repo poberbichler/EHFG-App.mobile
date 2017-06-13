@@ -43,6 +43,17 @@ export class SessionService {
       });
   }
 
+  getSessionById(id: string): Promise<Session> {
+    return this.getSessions().then(days => {
+      for (let key of Object.keys(days)) {
+        let filteredSessions = days[key].sessions.filter(session => session.id === id);
+        if (filteredSessions && filteredSessions.length > 0) {
+          return filteredSessions[0];
+        }
+      }
+    });
+  }
+
   getSessionForSpeaker(speaker: Speaker): Promise<Session[]> {
     return this.getSessions().then(sessionMap => {
       let result: Session[] = [];

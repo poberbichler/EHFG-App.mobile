@@ -15,7 +15,8 @@ export class SpeakerDetailPage {
 
   constructor(private navCtrl: NavController, private params: NavParams, private sessionService: SessionService) {
     this.speaker = params.data;
-    this.sessionService.getSessionForSpeaker(this.speaker).then(s => this.sessions = s);
+    this.sessionService.getSessionForSpeaker(this.speaker)
+      .then(sessions => this.sessions = sessions);
   }
 
   showSessionDetail(session: Session): void {
