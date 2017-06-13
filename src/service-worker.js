@@ -11,10 +11,16 @@
     }
   });
 
-  global.toolbox.router.any(/.*execute-api.eu-central-1.amazonaws.com\/prod\/.*sessions$/, global.toolbox.cacheFirst, {
+  global.toolbox.router.get(/.*execute-api.eu-central-1.amazonaws.com\/prod\/.*sessions$/, global.toolbox.cacheFirst, {
     cache: {
       name: "org.ehfg.app.sessions",
       maxAgeSeconds: 60 * 60
+    }
+  });
+
+  global.toolbox.router.get(/https?:\/\/pbs.twimg.com\/profile_images\/.*(\.jpe?g|png)$/, global.toolbox.cacheFirst, {
+    cache: {
+      name: "org.ehfg.app.twitter.images"
     }
   });
 
