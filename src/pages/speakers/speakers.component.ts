@@ -11,8 +11,10 @@ import {SpeakerDetailPage} from "../speaker-detail/speaker-detail.component";
 })
 export class SpeakersPage implements OnInit {
   speakers: Speaker[];
+  private allSpeakers: Speaker[];
 
-  constructor(private navCtrl: NavController, private speakerService: SpeakerService) {}
+  constructor(private navCtrl: NavController, private speakerService: SpeakerService) {
+  }
 
   ngOnInit(): void {
     this.getSpeakers();
@@ -22,7 +24,22 @@ export class SpeakersPage implements OnInit {
     this.navCtrl.push(SpeakerDetailPage, speaker);
   }
 
+  filterSpeakers(event: any ): void {
+    let filterTerm = event.target.value;
+
+    if (filterTerm && filterTerm.trim()) {
+      this.speakers = this.allSpeakers.filter(speaker => {
+        return speaker.fullName.toLowerCase().indexOf(filterTerm.toLowerCase()) > -1;
+      });
+    } else {
+      this.speakers = this.allSpeakers;
+    }
+  }
+
   private getSpeakers() {
-    this.speakerService.getSpeakers().then(speakers => this.speakers = speakers);
+    this.speakerService.getSpeakers().then(speakers => {
+      this.speakers = speakers;
+      this.allSpeakers = speakers;
+    });
   }
 }

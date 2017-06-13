@@ -11,8 +11,11 @@
     </ion-buttons>
   </ion-navbar>
 </ion-header>
+
 <ion-content>
   <ion-list>
+    <ion-searchbar (ionInput)="filterSpeakers($event)"></ion-searchbar>
+
     <ion-item *ngFor="let speaker of speakers" (click)="showDetails(speaker)">
       <span [innerHTML]="speaker.fullName"></span>
     </ion-item>
