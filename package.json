@@ -23,6 +23,7 @@
         "@ionic-native/status-bar": "3.13.1",
         "@ionic/storage": "2.0.1",
         "cordova-android": "^6.2.3",
+        "cordova-ios": "^4.4.0",
         "cordova-plugin-googlemaps": "git+https://github.com/phonegap-googlemaps-plugin/cordova-plugin-googlemaps.git",
         "cordova-plugin-service-worker": "git+https://github.com/MobileChromeApps/cordova-plugin-service-worker.git",
         "es6-promise-plugin": "git+https://github.com/vstirbu/PromisesPlugin.git",
@@ -30,12 +31,14 @@
         "ionicons": "3.0.0",
         "rxjs": "5.4.0",
         "sw-toolbox": "3.6.0",
+        "xcode": "^0.9.3",
         "zone.js": "0.8.12"
     },
     "devDependencies": {
         "@ionic/app-scripts": "2.0.2",
-        "@ionic/cli-plugin-cordova": "1.4.1",
-        "@ionic/cli-plugin-ionic-angular": "1.3.2",
+        "@ionic/cli-plugin-cordova": "1.6.2",
+        "@ionic/cli-plugin-ionic-angular": "1.4.1",
+        "ionic": "3.7.0",
         "typescript": "2.3.4"
     },
     "cordovaPlugins": [
