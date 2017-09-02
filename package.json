@@ -25,7 +25,6 @@
         "cordova-android": "^6.2.3",
         "cordova-ios": "^4.4.0",
         "cordova-plugin-googlemaps": "git+https://github.com/phonegap-googlemaps-plugin/cordova-plugin-googlemaps.git",
-        "cordova-plugin-service-worker": "git+https://github.com/MobileChromeApps/cordova-plugin-service-worker.git",
         "es6-promise-plugin": "git+https://github.com/vstirbu/PromisesPlugin.git",
         "ionic-angular": "3.5.3",
         "ionicons": "3.0.0",
@@ -63,8 +62,7 @@
             "cordova-plugin-googlemaps": {
                 "API_KEY_FOR_ANDROID": "AIzaSyDVVBimV3mdTV3V2kYCr5qpp9otxBO30D0",
                 "API_KEY_FOR_IOS": "AIzaSyDVVBimV3mdTV3V2kYCr5qpp9otxBO30D0"
-            },
-            "cordova-plugin-service-worker": {}
+            }
         },
         "platforms": [
             "android"
