@@ -30,15 +30,14 @@ body ion-app.md {
   border: 1px solid $border-color;
 }
 
-.platform-android {
-  .navbar-logo {
-    height: 42px;
-    padding-top: 5px;
-  }
+/* by default, hide the cropped logo */
+.navbar-logo-cropped {
+  display: none;
+}
 
-  .navbar-logo-cropped {
-    display: none;
-  }
+.navbar-logo {
+  height: 42px;
+  padding-top: 5px;
 }
 
 .platform-ios {
@@ -46,6 +45,7 @@ body ion-app.md {
     display: none;
   }
 
+  /* only show cropped logo on ios */
   .navbar-logo-cropped {
     display: inline;
     height: 32px;
