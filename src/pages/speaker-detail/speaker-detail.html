@@ -22,7 +22,7 @@
     <ion-item-divider color="light">
       Sessions
     </ion-item-divider>
-    <ion-item *ngFor="let session of sessions" (click)="showSessionDetail(session)">
+    <ion-item tappable *ngFor="let session of sessions" (click)="showSessionDetail(session)">
       {{session.code}} - {{session.name}}
     </ion-item>
   </ion-item-group>

@@ -42,7 +42,7 @@
     <ion-item-divider color="light">
       Speakers
     </ion-item-divider>
-    <ion-item *ngFor="let speaker of speakers" (click)="showSpeakerDetail(speaker)">
+    <ion-item tappable *ngFor="let speaker of speakers" (click)="showSpeakerDetail(speaker)">
       <span [innerHTML]="speaker.fullName"></span>
     </ion-item>
   </ion-item-group>

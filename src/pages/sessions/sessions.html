@@ -26,7 +26,7 @@
       <ion-item-divider color="light" [hidden]="dayMap[day].hidden">
         {{day}}
       </ion-item-divider>
-      <ion-item *ngFor="let session of dayMap[day].sessions" [hidden]="!session.favourite && showAllSessions === 'false'"
+      <ion-item tappable *ngFor="let session of dayMap[day].sessions" [hidden]="!session.favourite && showAllSessions === 'false'"
                 (click)="showDetails(session)">
         <h3>{{session.code}} - {{session.name}}</h3>
         <p>{{session.location}}: {{session.startTime | utcDate:'shortTime'}} - {{session.endTime | utcDate:'shortTime'}}</p>

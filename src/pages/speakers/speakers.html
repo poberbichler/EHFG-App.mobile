@@ -14,10 +14,10 @@
 </ion-header>
 
 <ion-content>
-  <ion-list>
+  <ion-list [virtualScroll]="speakers" [approxItemHeight]="'40px'" [virtualTrackBy]="getSpeakerId">
     <ion-searchbar (ionInput)="filterSpeakers($event)"></ion-searchbar>
 
-    <ion-item *ngFor="let speaker of speakers" (click)="showDetails(speaker)">
+    <ion-item tappable *virtualItem="let speaker" (click)="showDetails(speaker)">
       <span [innerHTML]="speaker.fullName"></span>
     </ion-item>
   </ion-list>

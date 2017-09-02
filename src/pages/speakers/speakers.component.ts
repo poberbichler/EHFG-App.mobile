@@ -10,7 +10,7 @@ import {SpeakerDetailPage} from "../speaker-detail/speaker-detail.component";
   templateUrl: 'speakers.html'
 })
 export class SpeakersPage implements OnInit {
-  speakers: Speaker[];
+  speakers: Speaker[] = [];
   private allSpeakers: Speaker[];
 
   constructor(private navCtrl: NavController, private speakerService: SpeakerService) {
@@ -34,6 +34,10 @@ export class SpeakersPage implements OnInit {
     } else {
       this.speakers = this.allSpeakers;
     }
+  }
+
+  getSpeakerId(index: number, speaker: Speaker) {
+    return speaker.id;
   }
 
   private getSpeakers() {

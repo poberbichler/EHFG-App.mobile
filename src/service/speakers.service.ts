@@ -18,8 +18,7 @@ export class SpeakerService {
       return Promise.resolve(this.speakers);
     }
 
-    return this.http.get(this.globals.baseUrl + "speakers")
-      .toPromise()
+    return this.http.get(this.globals.baseUrl + "speakers").toPromise()
       .then(response => response.json() as Speaker[])
       .then(data => this.speakers = data)
   }
