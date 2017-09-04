@@ -48,7 +48,6 @@ export class MapPage implements OnInit {
       });
       */
     } else {
-      console.log('not cordova, using browser based googleMap');
       let mapEle = this.mapElement.nativeElement;
 
       let map = new google.maps.Map(mapEle, {

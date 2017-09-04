@@ -1,5 +1,8 @@
 {
   "name": "app-mobile",
   "app_id": "org.ehfg.app",
-  "type": "ionic-angular"
+  "type": "ionic-angular",
+  "integrations": {
+    "cordova": {}
+  }
 }
