@@ -23,6 +23,7 @@ import {UtcDatePipe} from "../components/utcpipe/utctimestamp.pipe";
 import {TrustHtmlPipe} from "../components/sanitizeDom/trusthtml.pipe";
 import {Globals} from "../service/globals.service";
 import {SpeakerImageComponent} from "../components/speaker-image/speaker-image";
+import {GoogleMaps} from "@ionic-native/google-maps";
 
 
 @NgModule({
@@ -63,6 +64,7 @@ import {SpeakerImageComponent} from "../components/speaker-image/speaker-image";
   providers: [
     {provide: ErrorHandler, useClass: IonicErrorHandler},
     SplashScreen,
+    GoogleMaps,
     SpeakerService, SessionService, TwitterService, UtcTimeService, Globals]
 })
 export class AppModule {

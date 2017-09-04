@@ -1,6 +1,6 @@
 import {Component, ViewChild, ElementRef, OnInit} from "@angular/core";
 import {Events, Platform} from "ionic-angular";
-import {GoogleMap} from "@ionic-native/google-maps";
+import {GoogleMap, GoogleMaps, LatLng} from "@ionic-native/google-maps";
 import {Http} from "@angular/http";
 
 import 'rxjs/add/operator/toPromise';
@@ -15,16 +15,18 @@ declare const google: any;
 export class MapPage implements OnInit {
   public static readonly CATEGORY_TOPIC = "ehfg-app-categoryChanged";
 
-  @ViewChild('mapCanvas') mapElement: ElementRef;
+  @ViewChild('map') mapElement: ElementRef;
 
   public map: GoogleMap;
   private markers: any =  [];
 
-  constructor(private platform: Platform, private http: Http, private events: Events, private globals: Globals) { }
+  constructor(private platform: Platform, private http: Http, private events: Events, private globals: Globals,
+              private googleMaps: GoogleMaps) {
+  }
 
   ngOnInit(): void {
     this.events.subscribe(MapPage.CATEGORY_TOPIC, category => {
-      this.markers.filter(marker => marker.category === category.name).forEach(marker => {
+      this.markers.filter(marker => marker.get('category') === category.name).forEach(marker => {
         marker.setVisible(category.toggled);
       });
     });
@@ -33,24 +35,42 @@ export class MapPage implements OnInit {
   ionViewDidLoad(): void {
     console.log(this.platform);
     if (this.platform.is('cordova') === true) {
-      console.log('hm...')
-      /*
-      let mapEle = this.mapElement.nativeElement;
-      this.map = new GoogleMap('map_canvas');
-      mapEle.classList.add('show-map');
+      this.platform.ready().then(() => {
+        let niceMap = new GoogleMap('map', {
+          'controls': {
+            'compass': true,
+            'myLocationButton': true,
+            'indoorPicker': true,
+            'zoom': true
+          },
+          'gestures': {
+            'scroll': true,
+            'tilt': true,
+            'rotate': true,
+            'zoom': true
+          },
+          'camera': {
+            'latLng': new LatLng(47.170329, 13.103852),
+            'zoom': 16
+          }
+        });
 
-      GoogleMap.isAvailable().then(() => {
-        console.log('hmm2...')
-        this.map.moveCamera({
-          target: new GoogleMaps(47.170329, 13.103852),
-          zoom: 16
+        this.http.get(this.globals.baseUrl + "points").subscribe(data => {
+          data.json().forEach(point => {
+            niceMap.addMarker({
+              icon: `assets/img/markers/${point.category.cssClass ? point.category.cssClass + '-' : ''}marker.png`,
+              position: new LatLng(point.coordinate.latitude, point.coordinate.longitude),
+              title: point.title,
+              snippet: point.text
+            }).then(marker => {
+              marker.set('category', point.category.name);
+              this.markers.push(marker);
+            });
+          });
         });
       });
-      */
     } else {
-      let mapEle = this.mapElement.nativeElement;
-
-      let map = new google.maps.Map(mapEle, {
+      let map = new google.maps.Map(this.mapElement.nativeElement, {
         center: {lat: 47.170329, lng: 13.103852},
         zoom: 16
       });
