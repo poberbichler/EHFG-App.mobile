@@ -24,6 +24,7 @@ import {TrustHtmlPipe} from "../components/sanitizeDom/trusthtml.pipe";
 import {Globals} from "../service/globals.service";
 import {SpeakerImageComponent} from "../components/speaker-image/speaker-image";
 import {GoogleMaps} from "@ionic-native/google-maps";
+import {CacheModule} from "ionic-cache";
 
 
 @NgModule({
@@ -46,6 +47,7 @@ import {GoogleMaps} from "@ionic-native/google-maps";
   imports: [
     IonicModule.forRoot(EhfgApp),
     IonicStorageModule.forRoot(),
+    CacheModule.forRoot(),
     HttpModule,
     BrowserModule
   ],

@@ -7,6 +7,7 @@ import {TwitterService} from "../service/twitter.service";
 import {MapPage} from "../pages/map/map";
 import {SearchPage} from "../pages/search/search";
 import {Globals} from "../service/globals.service";
+import {CacheService} from "ionic-cache";
 
 @Component({
   templateUrl: 'app.template.html'
@@ -24,11 +25,14 @@ export class EhfgApp {
               private splashScreen: SplashScreen,
               private events: Events,
               private globals: Globals,
-              private menuCtrl: MenuController) {
+              private menuCtrl: MenuController,
+              private cacheService: CacheService) {
 
     platform.ready().then(() => {
       splashScreen.hide();
     });
+
+    this.cacheService.setDefaultTTL(60 * 60); // 1 hour
   }
 
   showRetweetsChanged(event: boolean) {
@@ -68,7 +72,8 @@ export class EhfgApp {
 		            the field of healthcare and public health meet to discuss a broad spectrum of important topics.</p>
 		            <p>The theme of this year is "Health in All Politics–a better future for Europe"</p>
 		            <p>Please direct any questions or concerns to <a href="mailto:info@ehfg.org">info@ehfg.org</a></p>`,
-      buttons: ['Exit']});
+      buttons: ['Exit']
+    });
     alert.present();
   }
 
