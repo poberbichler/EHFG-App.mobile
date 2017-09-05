@@ -36,7 +36,7 @@ export class MapPage implements OnInit {
     console.log(this.platform);
     if (this.platform.is('cordova') === true) {
       this.platform.ready().then(() => {
-        let niceMap = new GoogleMap('map', {
+        let googleMap = this.googleMaps.create(this.mapElement.nativeElement, {
           'controls': {
             'compass': true,
             'myLocationButton': true,
@@ -57,11 +57,11 @@ export class MapPage implements OnInit {
 
         this.http.get(this.globals.baseUrl + "points").subscribe(data => {
           data.json().forEach(point => {
-            niceMap.addMarker({
+            googleMap.addMarker({
               icon: `assets/img/markers/${point.category.cssClass ? point.category.cssClass + '-' : ''}marker.png`,
               position: new LatLng(point.coordinate.latitude, point.coordinate.longitude),
-              title: point.title,
-              snippet: point.text
+              title: point.name,
+              snippet: point.description
             }).then(marker => {
               marker.set('category', point.category.name);
               this.markers.push(marker);
