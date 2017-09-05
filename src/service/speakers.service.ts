@@ -4,24 +4,18 @@ import {Speaker} from "../data/speaker";
 import {Session} from "../data/session";
 import "rxjs/add/operator/toPromise";
 import {Globals} from "./globals.service";
+import {CacheService} from "ionic-cache";
 
 
 @Injectable()
 export class SpeakerService {
-  private speakers: any;
-
-  constructor(private http: Http, private globals: Globals) {
+  constructor(private http: Http, private globals: Globals, private cache: CacheService) {
   }
 
   getSpeakers(): Promise<Speaker[]> {
-    if (this.speakers) {
-      return Promise.resolve(this.speakers);
-    }
-
-    return this.http.get(this.globals.baseUrl + "speakers")
-      .toPromise()
-      .then(response => response.json() as Speaker[])
-      .then(data => this.speakers = data)
+    return this.cache.loadFromObservable("ehfg-app-speakers", this.http.get(this.globals.baseUrl + "speakers"))
+      .map(response => response.json() as Speaker[])
+      .toPromise();
   }
 
   getSpeakersForSession(session: Session): Promise<Speaker[]> {

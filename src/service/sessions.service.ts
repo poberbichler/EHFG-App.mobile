@@ -5,14 +5,13 @@ import {Speaker} from "../data/speaker";
 import {Session} from "../data/session";
 import {Storage} from "@ionic/storage";
 import {Globals} from "./globals.service";
+import {CacheService} from "ionic-cache";
 
 @Injectable()
 export class SessionService {
   private readonly FAVOURITE_SESSION: string = "favouriteSessionIds";
 
-  private sessions: any;
-
-  constructor(private http: Http, private storage: Storage, private globals: Globals) {
+  constructor(private http: Http, private storage: Storage, private globals: Globals, private cache: CacheService) {
   }
 
   getFavouriteSessions(): Promise<string[]> {
@@ -26,13 +25,9 @@ export class SessionService {
   }
 
   getSessions(): Promise<Map<string, ConferenceDay>> {
-    if (this.sessions) {
-      return Promise.resolve(this.sessions);
-    }
-
-    return this.http.get(this.globals.baseUrl + "sessions").toPromise()
-      .then(data => data.json() as Map<string, ConferenceDay>)
-      .then(data => this.sessions = data)
+    return this.cache.loadFromObservable("ehfg-app-sessions", this.http.get(this.globals.baseUrl + "sessions"))
+      .map(data => data.json() as Map<string, ConferenceDay>)
+      .toPromise()
       .then(data => {
         this.getFavouriteSessions().then(favouriteSessions => {
           Object.keys(data).forEach(key => {

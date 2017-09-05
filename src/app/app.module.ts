@@ -23,6 +23,7 @@ import {UtcDatePipe} from "../components/utcpipe/utctimestamp.pipe";
 import {TrustHtmlPipe} from "../components/sanitizeDom/trusthtml.pipe";
 import {Globals} from "../service/globals.service";
 import {SpeakerImageComponent} from "../components/speaker-image/speaker-image";
+import {CacheModule} from "ionic-cache";
 
 
 @NgModule({
@@ -45,6 +46,7 @@ import {SpeakerImageComponent} from "../components/speaker-image/speaker-image";
   imports: [
     IonicModule.forRoot(EhfgApp),
     IonicStorageModule.forRoot(),
+    CacheModule.forRoot(),
     HttpModule,
     BrowserModule
   ],
