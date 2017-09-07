@@ -3,7 +3,6 @@ import {Events, Platform} from "ionic-angular";
 import {GoogleMap, GoogleMaps, LatLng} from "@ionic-native/google-maps";
 import {Http} from "@angular/http";
 
-import 'rxjs/add/operator/toPromise';
 import {Globals} from "../../service/globals.service";
 
 declare const google: any;

@@ -2,7 +2,7 @@ import {Injectable} from "@angular/core";
 
 @Injectable()
 export class Globals {
-  mapCategories = [{
+  readonly mapCategories = [{
     name: "Venues",
     cssClass: "",
     imageUrl: "",

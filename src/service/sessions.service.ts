@@ -6,67 +6,59 @@ import {Session} from "../data/session";
 import {Storage} from "@ionic/storage";
 import {Globals} from "./globals.service";
 import {CacheService} from "ionic-cache";
+import {Observable} from "rxjs/Observable";
+
+import "rxjs/add/operator/do";
 
 @Injectable()
 export class SessionService {
   private readonly FAVOURITE_SESSION: string = "favouriteSessionIds";
 
-  constructor(private http: Http, private storage: Storage, private globals: Globals, private cache: CacheService) {
+  constructor(private http: Http,
+              private storage: Storage,
+              private globals: Globals,
+              private cache: CacheService) {
   }
 
   getFavouriteSessions(): Promise<string[]> {
     return this.storage.get(this.FAVOURITE_SESSION).then(arrayFromStorage => {
-      if (arrayFromStorage) {
-        return Promise.resolve(arrayFromStorage);
-      }
-
-      return Promise.resolve([]);
+      return Promise.resolve(arrayFromStorage || []);
     });
   }
 
-  getSessions(): Promise<Map<string, ConferenceDay>> {
+  private updateFavouriteSessions(data: Map<string, ConferenceDay>): void {
+    this.getFavouriteSessions().then(favouriteSessions => {
+      Object.keys(data).map(key => data[key].sessions)
+        .reduce((x,y) => x.concat(y), []) // flatMap
+        .forEach(session => session.favourite = favouriteSessions.indexOf(session.id) !== -1);
+    });
+  }
+
+  getSessions(): Observable<Map<string, ConferenceDay>> {
     return this.cache.loadFromObservable("ehfg-app-sessions", this.http.get(this.globals.baseUrl + "sessions"))
-      .map(data => data.json() as Map<string, ConferenceDay>)
-      .toPromise()
-      .then(data => {
-        this.getFavouriteSessions().then(favouriteSessions => {
-          Object.keys(data).forEach(key => {
-            data[key].sessions.forEach(session => session.favourite = favouriteSessions.indexOf(session.id) !== -1)
-          });
-        });
-        return data;
-      });
+      .map(request => request.json())
+      .do(data => this.updateFavouriteSessions(data));
   }
 
-  getSessionById(id: string): Promise<Session> {
-    return this.getSessions().then(days => {
-      for (let key of Object.keys(days)) {
-        let filteredSessions = days[key].sessions.filter(session => session.id === id);
-        if (filteredSessions && filteredSessions.length > 0) {
-          return filteredSessions[0];
-        }
-      }
-    });
+  getSessionById(id: string): Observable<Session> {
+    return this.getSessions()
+      .flatMap(data => Object.keys(data).map(key => data[key].sessions))
+      .flatMap(data => data)
+      .filter((session: Session) => session.id === id)
+      .first();
   }
 
-  getSessionForSpeaker(speaker: Speaker): Promise<Session[]> {
-    return this.getSessions().then(sessionMap => {
-      let result: Session[] = [];
-
-      Object.keys(sessionMap).forEach(key => {
-        sessionMap[key].sessions.forEach(session => {
-          if (session.speakers.indexOf(speaker.id) !== -1) {
-            result.push(session);
-          }
-        })
-      });
-
-      return result;
-    });
+  getSessionForSpeaker(speaker: Speaker): Observable<Session[]> {
+    return this.getSessions()
+      .flatMap(data => Object.keys(data).map(key => data[key].sessions))
+      .flatMap(data => data)
+      .filter((session: Session) => session.speakers.indexOf(speaker.id) !== -1)
+      .toArray();
   }
 
   isFavouriteSession(session: Session): Promise<boolean> {
-    return this.getFavouriteSessions().then(favouriteSessions => favouriteSessions.indexOf(session.id) !== -1);
+    return this.getFavouriteSessions()
+      .then(favouriteSessions => favouriteSessions.indexOf(session.id) !== -1);
   }
 
   toggleFavouriteSession(sessionId: string): Promise<boolean> {

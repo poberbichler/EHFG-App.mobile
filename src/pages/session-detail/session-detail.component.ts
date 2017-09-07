@@ -18,7 +18,7 @@ export class SessionDetailPage {
               private sessionService: SessionService) {
     this.session = params.data;
     speakerService.getSpeakersForSession(this.session)
-      .then(speakers => this.speakers = speakers);
+      .subscribe(speakers => this.speakers = speakers);
   }
 
   showSpeakerDetail(speaker: Speaker): void {

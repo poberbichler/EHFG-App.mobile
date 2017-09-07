@@ -25,7 +25,7 @@ export class SessionsPage implements OnInit {
   }
 
   private getSessions(): void {
-    this.sessionService.getSessions().then(dayMap => {
+    this.sessionService.getSessions().subscribe(dayMap => {
       this.dayMap = dayMap;
       this.days = Object.keys(dayMap);
     });

@@ -13,7 +13,9 @@ export class TwitterPage implements OnInit {
 
   hideRetweets: boolean = true;
 
-  constructor(private twitterService: TwitterService, private loadingCtrl: LoadingController, private events: Events) {
+  constructor(private twitterService: TwitterService,
+              private loadingCtrl: LoadingController,
+              private events: Events) {
   }
 
   ngOnInit(): void {
@@ -21,7 +23,7 @@ export class TwitterPage implements OnInit {
       this.hideRetweets = (event === true || event === 'true');
     });
 
-    this.twitterService.getTweets().then(tweetData => {
+    this.twitterService.getTweets().subscribe(tweetData => {
       this.tweets = tweetData.data;
       this.tweetData = tweetData;
     });
@@ -34,7 +36,7 @@ export class TwitterPage implements OnInit {
 
     loading.present();
 
-    this.twitterService.getTweetPage(this.tweetData.currentPage + 1).then(tweetData => {
+    this.twitterService.getTweetPage(this.tweetData.currentPage + 1).subscribe(tweetData => {
       this.tweetData = tweetData;
       this.tweets = this.tweets.concat(tweetData.data);
       loading.dismiss();
@@ -42,7 +44,7 @@ export class TwitterPage implements OnInit {
   }
 
   updateNewerTweets(refresher): void {
-    this.twitterService.updateTweetsById(this.tweets[0].id).then(newerTweets => {
+    this.twitterService.updateTweetsById(this.tweets[0].id).subscribe(newerTweets => {
       this.tweets = newerTweets.concat(this.tweets);
       refresher.complete();
     });

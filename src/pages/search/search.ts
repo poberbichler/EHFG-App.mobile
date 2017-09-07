@@ -27,11 +27,11 @@ export class SearchPage {
 
   public showDetails(item: any) {
     if (item.type === "SPEAKER") {
-      this.speakerService.getSpeakerById(item.id).then(speaker => {
+      this.speakerService.getSpeakerById(item.id).subscribe(speaker => {
         this.navCtrl.push(SpeakerDetailPage, speaker);
       });
     } else if (item.type === "SESSION") {
-      this.sessionService.getSessionById(item.id).then(session => {
+      this.sessionService.getSessionById(item.id).subscribe(session => {
         this.navCtrl.push(SessionDetailPage, session);
       });
     }
