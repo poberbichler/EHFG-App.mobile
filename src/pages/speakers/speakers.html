@@ -11,11 +11,15 @@
       <img class="navbar-logo-cropped" src="assets/img/logo_cropped.svg" />
     </ion-buttons>
   </ion-navbar>
+
+  <ion-toolbar>
+    <ion-searchbar id="speaker-search" (ionInput)="filterSpeakers($event)"></ion-searchbar>
+  </ion-toolbar>
 </ion-header>
+
 
 <ion-content>
   <ion-list [virtualScroll]="speakers" [approxItemHeight]="'40px'" [virtualTrackBy]="getSpeakerId">
-    <ion-searchbar (ionInput)="filterSpeakers($event)"></ion-searchbar>
 
     <ion-item tappable *virtualItem="let speaker" (click)="showDetails(speaker)">
       <span [innerHTML]="speaker.fullName"></span>
