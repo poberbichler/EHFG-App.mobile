@@ -11,7 +11,7 @@
   </ion-item>
 
   <ion-card-content>
-    <p [innerHTML]="tweet.message | trustHtml"></p>
+    <p [innerHTML]="tweet.formattedMesssage | trustHtml"></p>
   </ion-card-content>
 
   <p [hidden]="tweet.retweetedBy.length == 0 || !hideRetweets" class="retweets" [ngClass]="{expanded: isExpanded}"
