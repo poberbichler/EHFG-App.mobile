@@ -45,7 +45,16 @@ import {CacheModule} from "ionic-cache";
     SpeakerImageComponent
   ],
   imports: [
-    IonicModule.forRoot(EhfgApp),
+    IonicModule.forRoot(EhfgApp, {}, {
+      links: [
+        {component: TwitterPage, segment: 'twitter'},
+        {component: SessionsPage, name: 'Sessions', segment: 'sessions'},
+        {component: SessionDetailPage, segment: 'sessions/:id'},
+        {component: SpeakersPage, segment: 'speakers'},
+        {component: SpeakerDetailPage, segment: 'speakers/:id'},
+        {component: MapPage, segment: 'map'}
+      ]
+    }),
     IonicStorageModule.forRoot(),
     CacheModule.forRoot(),
     HttpModule,
