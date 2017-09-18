@@ -1,5 +1,5 @@
 import {Component, ViewChild, ElementRef, OnInit} from "@angular/core";
-import {Events, Platform} from "ionic-angular";
+import {Events, MenuController, Platform} from "ionic-angular";
 import {GoogleMap, GoogleMaps, LatLng} from "@ionic-native/google-maps";
 import {Http} from "@angular/http";
 
@@ -16,11 +16,14 @@ export class MapPage implements OnInit {
 
   @ViewChild('map') mapElement: ElementRef;
 
-  public map: GoogleMap;
   private markers: any =  [];
 
-  constructor(private platform: Platform, private http: Http, private events: Events, private globals: Globals,
-              private googleMaps: GoogleMaps) {
+  constructor(private platform: Platform,
+              private http: Http,
+              private events: Events,
+              private globals: Globals,
+              private googleMaps: GoogleMaps,
+              private menuCtrl: MenuController) {
   }
 
   ngOnInit(): void {
@@ -32,41 +35,11 @@ export class MapPage implements OnInit {
   }
 
   ionViewDidLoad(): void {
-    console.log(this.platform);
-    if (this.platform.is('cordova') === true) {
+    if (this.isNative()) {
       this.platform.ready().then(() => {
-        let googleMap = this.googleMaps.create(this.mapElement.nativeElement, {
-          'controls': {
-            'compass': true,
-            'myLocationButton': true,
-            'indoorPicker': true,
-            'zoom': true
-          },
-          'gestures': {
-            'scroll': true,
-            'tilt': true,
-            'rotate': true,
-            'zoom': true
-          },
-          'camera': {
-            'latLng': new LatLng(47.170329, 13.103852),
-            'zoom': 16
-          }
-        });
-
-        this.http.get(this.globals.baseUrl + "points").subscribe(data => {
-          data.json().forEach(point => {
-            googleMap.addMarker({
-              icon: `assets/img/markers/${point.category.cssClass ? point.category.cssClass + '-' : ''}marker.png`,
-              position: new LatLng(point.coordinate.latitude, point.coordinate.longitude),
-              title: point.name,
-              snippet: point.description
-            }).then(marker => {
-              marker.set('category', point.category.name);
-              this.markers.push(marker);
-            });
-          });
-        });
+        let map = this.createNativeMap();
+        this.http.get(this.globals.baseUrl + "points").subscribe(data => this.createNativeMarker(data, map));
+        this.workaroundSideMenu(map);
       });
     } else {
       let map = new google.maps.Map(this.mapElement.nativeElement, {
@@ -95,5 +68,52 @@ export class MapPage implements OnInit {
         });
       });
     }
+  }
+
+  private createNativeMap() {
+    return this.googleMaps.create(this.mapElement.nativeElement, {
+      'controls': {
+        'compass': true,
+        'myLocationButton': true,
+        'indoorPicker': true,
+        'zoom': true
+      },
+      'gestures': {
+        'scroll': true,
+        'tilt': true,
+        'rotate': true,
+        'zoom': true
+      },
+      'camera': {
+        'latLng': new LatLng(47.170329, 13.103852),
+        'zoom': 16
+      }
+    });
+  }
+
+  private workaroundSideMenu(map: any) {
+    let leftMenu = this.menuCtrl.get('left');
+    if (leftMenu && this.isNative()) {
+      leftMenu.ionOpen.subscribe(() => map.setClickable(false));
+      leftMenu.ionClose.subscribe(() => map.setClickable(true));
+    }
+  }
+
+  private createNativeMarker(input: any, map: any) {
+    input.json().forEach(point => {
+      map.addMarker({
+        icon: `assets/img/markers/${point.category.cssClass ? point.category.cssClass + '-' : ''}marker.png`,
+        position: new LatLng(point.coordinate.latitude, point.coordinate.longitude),
+        title: point.name,
+        snippet: point.descriptionNative
+      }).then(marker => {
+        marker.set('category', point.category.name);
+        this.markers.push(marker);
+      });
+    });
+  }
+
+  private isNative() {
+    return this.platform.is('cordova') === true;
   }
 }
