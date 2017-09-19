@@ -51,14 +51,12 @@ export class EhfgApp {
   }
 
   get activeIndex(): number {
-    let activeNavChild = this.nav.getActiveChildNav();
-    if (activeNavChild) {
-      if (activeNavChild.getSelected()) {
-        return activeNavChild.getSelected().index;
-      }
+    let activeNavChild = this.nav.getActiveChildNavs();
+    if (activeNavChild[0] && activeNavChild[0].getSelected()) {
+      return activeNavChild[0].getSelected().index;
     }
 
-    return;
+    return 0;
   }
 
   openTab(tabIndex: number): void {
@@ -70,7 +68,7 @@ export class EhfgApp {
       title: 'About',
       subTitle: `<p>The European Health Forum Gastein is an annual international conference where stakeholders within
 		            the field of healthcare and public health meet to discuss a broad spectrum of important topics.</p>
-		            <p>The theme of this year is "Health in All Politics–a better future for Europe"</p>
+		            <p>The theme of this year is "Health in All Politics – a better future for Europe"</p>
 		            <p>Please direct any questions or concerns to <a href="mailto:info@ehfg.org">info@ehfg.org</a></p>`,
       buttons: ['Exit']
     });
@@ -78,11 +76,7 @@ export class EhfgApp {
   }
 
   resetData(): void {
-    caches.keys().then(cacheNames => {
-      Promise.all(cacheNames.map(cacheName => {
-        return caches.delete(cacheName);
-      })).then(result => location.reload());
-    });
+    this.cacheService.clearAll().then(() => location.reload());
   }
 
   get mapCategories() {
