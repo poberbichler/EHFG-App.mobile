@@ -1,6 +1,6 @@
-import {Component, ViewChild, ElementRef, OnInit} from "@angular/core";
+import {Component, ElementRef, OnInit, ViewChild} from "@angular/core";
 import {Events, MenuController, Platform} from "ionic-angular";
-import {GoogleMap, GoogleMaps, LatLng} from "@ionic-native/google-maps";
+import {GoogleMaps, LatLng} from "@ionic-native/google-maps";
 import {Http} from "@angular/http";
 
 import {Globals} from "../../service/globals.service";
