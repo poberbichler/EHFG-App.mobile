@@ -20,7 +20,7 @@ export class SpeakerImageComponent implements OnInit {
     return "assets/img/speakers/" + this.speaker.imageUrl.split("/").pop();
   }
 
-  updateUrl(errorEvent: any ) {
+  updateUrl(errorEvent: any) {
     if (this.imageUrl === this.extractLocalUrlFromSpeaker(this.speaker)) {
       this.imageUrl = this.speaker.imageUrl;
     } else {

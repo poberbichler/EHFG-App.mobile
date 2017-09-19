@@ -16,8 +16,12 @@ export class SearchPage {
   searchResult: any;
   hasAnyResult: boolean = false;
 
-  constructor(private navParams: NavParams, private http: Http, private globals: Globals, private navCtrl: NavController,
-              private speakerService: SpeakerService, private sessionService: SessionService) {
+  constructor(private navParams: NavParams,
+              private http: Http,
+              private globals: Globals,
+              private navCtrl: NavController,
+              private speakerService: SpeakerService,
+              private sessionService: SessionService) {
     this.searchTerm = navParams.data;
     this.http.get(this.globals.baseUrl + `search/${this.searchTerm}`).subscribe(result => {
       this.searchResult = result.json();

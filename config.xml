@@ -73,17 +73,20 @@
     <preference name="FadeSplashScreenDuration" value="300" />
     <preference name="SplashScreen" value="screen" />
     <preference name="SplashScreenDelay" value="3000" />
+    <preference name="ShowSplashScreenSpinner" value="false" />
     <feature name="StatusBar">
         <param name="ios-package" onload="true" value="CDVStatusBar" />
     </feature>
     <preference name="CordovaWebViewEngine" value="CDVWKWebViewEngine" />
     <allow-navigation href="http://192.168.0.11:8000" />
     <allow-navigation href="http://192.168.0.11:8100" />
+    <engine name="android" spec="~6.2.3" />
+    <engine name="ios" spec="~4.3.1" />
+    <allow-navigation href="http://192.168.1.114:8100" />
+    <plugin name="cordova-plugin-splashscreen" spec="~4.0.3" />
     <plugin name="cordova-plugin-googlemaps" spec="https://github.com/phonegap-googlemaps-plugin/cordova-plugin-googlemaps">
         <variable name="API_KEY_FOR_ANDROID" value="AIzaSyD4n9YtgCJmxk4ZaQnTPWw3eoosOj1U6xo" />
         <variable name="API_KEY_FOR_IOS" value="AIzaSyCkNqDDuPs8KFeC_avveQsNsSsQtiFO-24" />
     </plugin>
-    <engine name="android" spec="~6.2.3" />
-    <engine name="ios" spec="~4.3.1" />
-    <allow-navigation href="http://192.168.1.114:8100" />
+    <allow-navigation href="http://192.168.1.118:8101" />
 </widget>
